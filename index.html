@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.google.com/?query=mont&selection.family=Montserrat:300,400" rel="stylesheet">
     <title>Intention Timer</title>
   </head>
   <body>
     <header>INTENTION TIMER</header>
+    <h1>New Activity</h1>
     <main>
       <section class="new-activity">
-        <h1>New Activity</h1>
         <form class="container">
           <h2>Select a category:</h2>
           <div class="wrapper">
@@ -29,7 +31,7 @@
             <label for="secondsInput">Seconds</label>
             <input class="seconds-input" id="secondsInput" type="text"/>
           </div>
-        <button>START ACTIVITY</button>
+        <button class="start-activity-button" id="startActivityButton">START ACTIVITY</button>
         </form>
       </section>
       <section class="past-activities">
