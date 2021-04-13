@@ -6,41 +6,38 @@
   <body>
     <header>INTENTION TIMER</header>
     <main>
-      <section>
+      <section class="new-activity">
         <h1>New Activity</h1>
-        <form>
+        <form class="container">
           <h2>Select a category:</h2>
           <div class="wrapper">
-            <button>Study</button>
+            <button class="study-button" id="studyButton">Study</button>
           </div>
           <div class="wrapper">
-            <button>Meditate</button>
+            <button class="meditate-button" id="meditateButton">Meditate</button>
           </div>
           <div class="wrapper">
-            <button>Exercise</button>
+            <button class="exercise-button" id="exerciseButton">Exercise</button>
           </div>
-          <div>
-            <h3>What would you like to accomplish during this time?</h3>
-            <input></input>
-            <label></label>
+          <div class="input-one">
+            <label for="inputOne">What would you like to accomplish during this time?</label><br>
+            <input class="user-input-one" id="inputOne" type="text"/>
           </div>
-          <div>
-            <h3>Minutes</h3>
-            <input></input>
-            <label></label>
-          </div>
-          <div>
-            <h3>Seconds</h3>
-            <input></input>
-            <label></label>
+          <div class="input-two">
+            <label for="minutesInput">Minutes</label><br>
+            <input class="minutes-input" id="minutesInput" type="text"/>
+            <label for="secondsInput">Seconds</label>
+            <input class="seconds-input" id="secondsInput" type="text"/>
           </div>
         <button>START ACTIVITY</button>
         </form>
       </section>
-      <section>
+      <section class="past-activities">
         <h1>Past Activities</h1>
-          <p>You haven't logged any activities yet.</p>
-          <p>Complete the form to the left to get started!</p>
+          <div class="list-past-activities">
+            <p>You haven't logged any activities yet.</p>
+            <p>Complete the form to the left to get started!</p>
+          </div>
       </section>
     </main>
   </body>
