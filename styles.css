@@ -1,0 +1,44 @@
+/* // Main background: #2B2733
+// Text on main background: #CBC9CF
+// Header, cards: #46424D
+// Card shadow: #26222D
+// Text on header and cards: #FFF
+// Study: #B3FD78
+// Meditate: #C278FD
+// Exercise: #FD8078
+// Error: #EFB7EC */
+
+
+/* border-bottom: 1px solid;
+border-color:#EFB7EC; will need to add this to the sections to add white split line.  */
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+body {
+  background: #2B2733;
+  margin: 0;
+}
+header {
+  background: #46424D;
+  color: #FFF;
+  height: 40px;
+
+
+}
+main {
+  color: #CBC9CF;
+  display:flex;
+  flex-direction: row;
+  margin-top: 45px;
+}
+.new-activity {
+  background: #46424D;
+}
+.start-activity-button {
+  border-radius: 4.5px;
+  border: transparent;
+  background-color: #FFF;
+  /* display: flex;
+  align-self: flex-end; */
+}
