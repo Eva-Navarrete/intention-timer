@@ -70,3 +70,35 @@ h1 {
   font-size: 13px;
   margin: 2em 3em 2em 6em;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  background: #46424D;
+  border-color: #FFF;
+  border-radius: 4px;
+  color: #FFF;
+  height: 3.5em;
+  padding: 1em;
+  width: 10em;
+}
+
+.logo {
+  height: 1em;
+  display: flex;
+
+}
+
+/* .study-button,
+.study-logo {
+  height: 6em;
+
+} */
