@@ -40,7 +40,8 @@ h1 {
 
 .new-activity {
   height: 50em;
-  width: 55em;
+  width: 65em;
+  margin-bottom: 10em;
 }
 
 .container {
@@ -89,11 +90,49 @@ h1 {
   height: 3.5em;
   padding: 1em;
   width: 10em;
+  margin-right: 10em;
 }
 
 .logo {
   height: 1em;
   display: flex;
+}
+
+.input-one {
+  margin: 2em 1em 2em 1em;
+  padding: 1px;
+}
+
+.user-input-one {
+  background: #46424D;
+  border: transparent;
+  border-bottom: 1px solid;
+  border-color: #CBC9CF;
+  width: 40em;
+}
+
+
+.input-two {
+  display: block;
+  /* flex-direction: row;
+  justify-content: space-between; */
+}
+
+.time-input {
+  display: flex;
+  flex-direction: row;
+  /* align-self: baseline; */
+  background: #46424D;
+  border: transparent;
+  border-bottom: 1px solid;
+  border-color: #CBC9CF;
+  margin: 2em 1em 2em 1em;
+}
+
+.start-activity-button {
+  background-color: #FFF;
+  padding: .5em 2em .5em 2em;
+  margin-left: 32em;
 
 }
 
