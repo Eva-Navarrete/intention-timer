@@ -7,32 +7,27 @@
   </head>
   <body>
     <header>INTENTION TIMER</header>
-    <img src="assets/study.svg">
     <main>
       <section class="new-activity">
         <h1>New Activity</h1>
         <form class="container">
           <h2>Select a category:</h2>
           <div class="wrapper">
-            <button class="study-button" id="studyButton">Study</button>
-          </div>
-          <div class="wrapper">
-            <button class="meditate-button" id="meditateButton">Meditate</button>
-          </div>
-          <div class="wrapper">
-            <button class="exercise-button" id="exerciseButton">Exercise</button>
+            <button class="button" id="studyButton"><img class="logo"src="assets/study.svg"alt="study-logo">Study</button>
+            <button class="button" id="meditateButton"><img class="logo" src="assets/meditate.svg" alt="meditate-logo">Meditate</button>
+            <button class="button" id="exerciseButton"><img class="logo" src="assets/exercise.svg" alt="exercise-logo">Exercise</button>
           </div>
           <div class="input-one">
-            <label for="inputOne">What would you like to accomplish during this time?</label><br>
+            <label for="inputOne">What would you like to accomplish during this time?</label><br><br>
             <input class="user-input-one" id="inputOne" type="text"/>
           </div>
           <div class="input-two">
-            <label for="minutesInput">Minutes</label><br>
-            <input class="minutes-input" id="minutesInput" type="text"/>
+            <label for="minutesInput">Minutes</label>
+            <input class="time-input" id="minutesInput" type="number" min="0" max="600"><br><br>
             <label for="secondsInput">Seconds</label>
-            <input class="seconds-input" id="secondsInput" type="text"/>
+            <input class="time-input" id="secondsInput" type="number" min="0" max="59"><br><br>
+            <button class="start-activity-button" id="startActivityButton">START ACTIVITY</button>
           </div>
-        <button class="start-activity-button" id="startActivityButton">START ACTIVITY</button>
         </form>
       </section>
       <section class="past-activities">
