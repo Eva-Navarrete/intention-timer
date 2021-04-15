@@ -6,6 +6,85 @@
 // 🤩(event Bubling starts?) Target buttons section with dqs then create an evenListener for each with a toggle/hover event which changes color of selected buttton to the corresponding color.
 // Create function that will be added to event listener which will toggle the clicked button selection. ?if event.target includes mediation class then replace innerHTML with color mediation img and etc.. (BE clear with Targets!!)
 
+// user clicks either exercise, meditate, study
+// border change to color
+// icon change to color
+// do we use hover for border and replace img in js with other file
+// how?
+//
+
+var selectCategoryContainer = document.querySelector('#formContainer');
+var studyBtn = document.querySelector('#studyButton');
+var meditateBtn = document.querySelector('#meditateButton');
+var exerciseBtn = document.querySelector('#exerciseButton');
+
+selectCategoryContainer.addEventListener('click', selectCategoryContainer)
+
+// function swapColor() {
+//   // if study button is clicked, change to green
+//   // if meditate button is clickd, change to purple
+//   // if exercise button is clickd, change to red
+// }
+
+// studyBtn.src = 'assets/study-active.svg'
+//
+// studyBtn.innerHTML = 'assets/study-active.svg';
+// meditateBtn.innerHTML = 'assets/meditate-active.svg';
+// exerciseBtn.innerHTML = 'assets/exercise-active.svg';
+
+var wrapper = document.querySelector('.wrapper')
+  var studyButton = document.querySelector('#studyButton')
+  var meditateButton = document.querySelector('#meditateButton')
+  var exerciseButton = document.querySelector('#exerciseButton')
+
+wrapper.addEventListener('click', changeColor);
+
+function changeColor() {
+  event.preventDefault();
+  if (event.target.getElementById === "studyButton") {
+    studyButton.innerHTML =  `<button class="button" id="studyButton"><img class="logo"src="assets/study-active.svg"alt="study-logo">Study</button>`
+  }
+  if(event.target.className === "button") {
+    meditateButton.innerHTML = `<button class="button" id="meditateButton"><img class="logo"src="assets/meditate-active.svg"alt="meditate-logo">Meditate</button>`
+  }
+  if(event.target.className === "button") {
+    exerciseButton.innerHTML = `<button class="button" id="exerciseButton"><img class="logo"src="assets/exercise-active.svg"alt="exercise-logo">Exercise</button>`
+  }
+}
+
+// var wrapper = document.querySelector('.wrapper')
+// var studyBtn = document.querySelector('#studyButton')
+//
+// wrapper.addEventListener('click', changeColor);
+//
+// function changeColor(event) {
+//   event.preventDefault();
+//   if (event.target.getElementById === "#studyButton") {
+//     img.innerHTML = '<button class="button" id="studyButton"><img class="logo" src="assets/study-active.svg" alt="study-logo">Study</button>';
+//   }
+// }
+// function showSelectCategory() {
+//   innerHTML = '';
+//   if (event.target.className.includes('study-button')) {
+//     // `${img src= 'new color img'}`
+//     //then we want to replace img with color img
+//     innerHTML =
+//     '<button class="study-button" id="studyButton"><img class="logo"src="assets/study-active.svg" alt="study-logo">Study</button>';
+//   }
+//   console.log(event);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 // An input field should be provided for What would you like to accomplish during this time?, minutes and seconds. The minutes and seconds fields should only accept numbers. (Hint: more than one layer should probably be put into place to ensure this. Make sure that e cannot be accepted.)
 
 // 🤩DUNZOO ^^ maybe..???
@@ -24,4 +103,4 @@
 
 // If the Start Activity button is clicked before the user has entered information into all four inputs, the user will receive an error message, but will not lose any information that was provided.
 
-// 🤩 add preventdefault event to prevent user losing any input info when missed in input field display similiar error message from before. 
+// 🤩 add preventdefault event to prevent user losing any input info when missed in input field display similiar error message from before.
