@@ -8,20 +8,20 @@
   <body>
     <header>INTENTION TIMER</header>
     <main>
-      <section class="new-activity">
+      <section class="new-activity" id="newActivity">
         <h1>New Activity</h1>
         <form class="container" id="formContainer">
           <h2>Select a category:</h2>
-          <div class="wrapper">
-            <button class="button" id="studyButton"><img class="logo"src="assets/study.svg"alt="study-logo">Study</button>
-            <button class="button" id="meditateButton"><img class="logo" src="assets/meditate.svg" alt="meditate-logo">Meditate</button>
-            <button class="button" id="exerciseButton"><img class="logo" src="assets/exercise.svg" alt="exercise-logo">Exercise</button>
+          <div class="wrapper" id="wrapper">
+            <button class="study-button" id="studyButton"><img class="logo" id="studyLogo" src="assets/study.svg" alt="study-logo">Study</button>
+            <button class="meditate-button" id="meditateButton"><img class="logo" id="meditateButton" src="assets/meditate.svg" alt="meditate-logo">Meditate</button>
+            <button class="exercise-button" id="exerciseButton"><img class="logo" id="exerciseButton" src="assets/exercise.svg" alt="exercise-logo">Exercise</button>
           </div>
-          <div class="input-one">
+          <div class="input-one" id="inputOne">
             <label for="inputOne">What would you like to accomplish during this time?</label><br><br>
-            <input class="user-input-one" id="inputOne" type="text"/>
+            <input class="user-input-one" id="userInputOne" type="text"/>
           </div>
-          <div class="input-two">
+          <div class="input-two" id="inputTwo">
             <label for="minutesInput">Minutes</label>
             <input class="time-input" id="minutesInput" type="number" min="0" max="600"><br><br>
             <label for="secondsInput">Seconds</label>
@@ -30,9 +30,9 @@
           </div>
         </form>
       </section>
-      <section class="past-activities">
+      <section class="past-activities" id="pastActivities">
         <h1>Past Activities</h1>
-          <div class="list-past-activities">
+          <div class="list-past-activities" id="listPastActivities">
             <p>You haven't logged any activities yet.</p>
             <p>Complete the form to the left to get started!</p>
           </div>
