@@ -96,6 +96,21 @@ h1 {
   margin-right: 10em;
 }
 
+.study-clicked {
+  border-color: #B3FD78;
+  color: #B3FD78;
+}
+
+.meditate-clicked {
+  border-color: #C278FD;
+  color: #C278FD;
+}
+
+.exercise-clicked {
+  border-color: #FD8078;
+  color: #FD8078;
+}
+
 .logo {
   height: 1em;
   display: flex;

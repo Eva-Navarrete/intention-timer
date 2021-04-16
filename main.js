@@ -1,46 +1,122 @@
 // QUERYSELECTORS
 
 var selectCategoryContainer = document.querySelector('#formContainer');
-var studyBtn = document.querySelector('#studyWrapper');
-var meditateBtn = document.querySelector('#meditateWrapper');
-var exerciseBtn = document.querySelector('#exerciseWrapper');
 var wrapper = document.querySelector('#wrapper');
-var startActivityButton = document.querySelector('#startActivityButton');
 var category = document.querySelector('#userInputOne');
 var minutes = document.querySelector('#minutesInput');
 var seconds = document.querySelector('#secondsInput');
+
+var startActivityButton = document.querySelector('#startActivityButton');
+var studyBtn = document.querySelector('#studyWrapper');
+var meditateBtn = document.querySelector('#meditateWrapper');
+var exerciseBtn = document.querySelector('#exerciseWrapper');
+var studyClickedBtn = document.querySelector('.study-wrapper');
+var meditateClickedBtn = document.querySelector('.meditate-wrapper');
+var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
+
 var studyImg = document.querySelector('#studyLogo');
 var meditateImg = document.querySelector('#meditateLogo');
 var exerciseImg = document.querySelector('#exerciseLogo');
 
+
 wrapper.addEventListener('click', changeColor);
-startActivityButton.addEventListener('click', submitActivityInfo);
+startActivityButton.addEventListener('click', addElement);
 
 function changeColor() {
   event.preventDefault();
-  console.log(event.target)
   if(event.target.id === 'studyWrapper') {
-    studyImg.src = `assets/study-active.svg`
-    studyBtn.style.borderColor = "#B3FD78";
-    studyBtn.style.color = "#B3FD78";
+    changeStudyButton();
   } else if (event.target.id === 'meditateWrapper') {
-    meditateImg.src = `assets/meditate-active.svg`
-    meditateBtn.style.borderColor = "#C278FD";
-    meditateBtn.style.color = "#C278FD";
+    changeMeditateButton()
   } else if (event.target.id === 'exerciseWrapper') {
-    exerciseImg.src = `assets/exercise-active.svg`
-    exerciseBtn.style.borderColor = "#FD8078";
-    exerciseBtn.style.color = "#FD8078";
+    changeExerciseButton()
     }
   };
 
-  function submitActivityInfo() {
-    var activityInfo = {
-      activityName: activityName.value,
-      minutes: minutesInfo.value,
-      seconds: secondsInfo.value
-    }
+// *functions still need to revert img back to original
+function changeStudyButton() {
+  exerciseClickedBtn.classList.remove('exercise-clicked');
+  meditateClickedBtn.classList.remove('meditate-clicked');
+  studyClickedBtn.classList.add('study-clicked');
+  studyImg.src = `assets/study-active.svg`;
+}
+
+function changeMeditateButton() {
+  exerciseClickedBtn.classList.remove('exercise-clicked');
+  meditateClickedBtn.classList.add('meditate-clicked');
+  studyClickedBtn.classList.remove('study-clicked');
+  meditateImg.src = `assets/meditate-active.svg`;
+}
+
+function changeExerciseButton() {
+  exerciseClickedBtn.classList.add('exercise-clicked');
+  meditateClickedBtn.classList.remove('meditate-clicked');
+  studyClickedBtn.classList.remove('study-clicked');
+  exerciseImg.src = `assets/exercise-active.svg`;
+}
+
+//var errorMsg = document.querySelector('error-msg');
+// function showErrorMsg(event) {
+//   event.preventDefault();
+//   var errorElement = '';
+//   if (category.value === '' || minutes.value === '' || seconds.value === '') {
+//    return errorElement = document.createElement("p", {img.src="assets/warning.svg", 'A description is required.'});
+//   }
+// }
+
+document.body.onload = addElement;
+function addElement(event) {
+  event.preventDefault();
+  if (category.value === '' || minutes.value === '' || seconds.value === '') {
+  var newDiv = document.createElement('div');
+  var newContent = document.createTextNode('msg or whatever');
+  newDiv.appendChild(div);
+  var currentDiv = document.getElementById('errorMsg');
+  document.body.insertBefore(newDiv, currentDiv);
   }
+}
+
+// function addTag(event) {
+//   event.preventDefault();
+//   if (category.value === '' || minutes.value === '' || seconds.value === '') {
+//   var node = document.createElement("p");
+//   var textnode = document.createTextNode("message or whatevs");
+//   node.appendChild(textnode);
+//   document.getElementById("userInputOne").appendChild(node);
+//   }
+// }
+
+// function showErrorMsg(event) {
+//   event.preventDefault();
+//   var errorElement = document.createElement("p");
+//   errorElement.id = "errorMsg"
+//   errorElement.className = "error-message";
+//   errorElement.innerHTML = '<p>A description is required.</p>'
+//   document.getElementById("userInputOne").appendChild(errorElement);
+//   console.log(event.target);
+// }
+
+// display error message (see comp) if form is submitted without filling out all fields
+// use innerHTML
+// create function showErrorMsg()
+// error msg has img and states 'A description is required.'
+
+// add element for p tag with img
+
+
+
+
+// function submitActivityInfo() {
+//   var activityInfo = {
+//     activityName: activityName.value,
+//     minutes: minutesInfo.value,
+//     seconds: secondsInfo.value
+//   }
+// }
+
+
+
+
 
 
 
