@@ -17,6 +17,7 @@ var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
 var studyImg = document.querySelector('#studyLogo');
 var meditateImg = document.querySelector('#meditateLogo');
 var exerciseImg = document.querySelector('#exerciseLogo');
+var errorImg = document.querySelector('.error-image')
 
 
 wrapper.addEventListener('click', changeColor);
@@ -54,14 +55,14 @@ function changeExerciseButton() {
   studyClickedBtn.classList.remove('study-clicked');
   exerciseImg.src = `assets/exercise-active.svg`;
 }
-var errorImg = document.querySelector('.error-image')
+
 function addErrorMessage(event) {
   event.preventDefault();
   if (!category.value || !minutes.value || !seconds.value ) {
-    var node = document.createElement("p");
-      var textnode = document.createTextNode("A description is required.");
-      node.appendChild(textnode);
-      document.getElementById("inputOne").appendChild(node);
+    var errorElement = document.createElement("p");
+      var errorMsg = document.createTextNode("A description is required.");
+      errorElement.appendChild(errorMsg);
+      document.getElementById("inputOne").appendChild(errorElement);
       errorImg.classList.remove('hidden');
     }
   }
