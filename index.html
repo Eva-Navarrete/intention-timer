@@ -19,11 +19,9 @@
           </div>
           <div class="input-one" id="inputOne">
             <label for="inputOne">What would you like to accomplish during this time?</label><br><br>
-            <input class="user-input-one" id="userInputOne" type="text"/>
+            <input class="user-input-one" id="userInputOne" type="text"/><br><br>
+            <img class="error-image hidden" src="assets/warning.svg">
 
-            <p class="error-msg" id='errorMsg'>
-              <!-- <img class="error-img" id="errorImg" src="assets/warning.svg" alt"error message"> -->
-            </p>
 
           </div>
           <div class="input-two" id="inputTwo">
@@ -31,7 +29,7 @@
             <input class="time-input" id="minutesInput" type="number" min="0" max="600"><br><br>
             <label for="secondsInput">Seconds</label>
             <input class="time-input" id="secondsInput" type="number" min="0" max="59"><br><br>
-            <button class="start-activity-button" id="startActivityButton">START ACTIVITY</button>
+            <button class="start-activity-button" id="startActivityButton" type="button">START ACTIVITY</button>
           </div>
         </form>
       </section>

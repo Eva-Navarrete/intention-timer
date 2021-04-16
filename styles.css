@@ -153,7 +153,13 @@ h1 {
   margin-left: 32em;
 
 }
+.error-image {
+  height: 2vh;
+}
 
+.hidden {
+  display: none;
+}
 /* .study-button,
 .study-logo {
   height: 6em;
