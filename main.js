@@ -54,7 +54,7 @@ function changeExerciseButton() {
   studyClickedBtn.classList.remove('study-clicked');
   exerciseImg.src = `assets/exercise-active.svg`;
 }
-
+var errorImg = document.querySelector('.error-image')
 function addErrorMessage(event) {
   event.preventDefault();
   if (!category.value || !minutes.value || !seconds.value ) {
@@ -62,9 +62,11 @@ function addErrorMessage(event) {
       var textnode = document.createTextNode("A description is required.");
       node.appendChild(textnode);
       document.getElementById("inputOne").appendChild(node);
-
+      errorImg.classList.remove('hidden');
     }
-}
+  }
+
+
 
 
 
