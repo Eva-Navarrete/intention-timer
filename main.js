@@ -20,7 +20,7 @@ var exerciseImg = document.querySelector('#exerciseLogo');
 
 
 wrapper.addEventListener('click', changeColor);
-startActivityButton.addEventListener('click', addElement);
+startActivityButton.addEventListener('click', addErrorMessage);
 
 function changeColor() {
   event.preventDefault();
@@ -55,54 +55,16 @@ function changeExerciseButton() {
   exerciseImg.src = `assets/exercise-active.svg`;
 }
 
-//var errorMsg = document.querySelector('error-msg');
-// function showErrorMsg(event) {
-//   event.preventDefault();
-//   var errorElement = '';
-//   if (category.value === '' || minutes.value === '' || seconds.value === '') {
-//    return errorElement = document.createElement("p", {img.src="assets/warning.svg", 'A description is required.'});
-//   }
-// }
-
-document.body.onload = addElement;
-function addElement(event) {
+function addErrorMessage(event) {
   event.preventDefault();
-  if (category.value === '' || minutes.value === '' || seconds.value === '') {
-  var newDiv = document.createElement('div');
-  var newContent = document.createTextNode('msg or whatever');
-  newDiv.appendChild(div);
-  var currentDiv = document.getElementById('errorMsg');
-  document.body.insertBefore(newDiv, currentDiv);
-  }
+  if (!category.value || !minutes.value || !seconds.value ) {
+    var node = document.createElement("p");
+      var textnode = document.createTextNode("A description is required.");
+      node.appendChild(textnode);
+      document.getElementById("inputOne").appendChild(node);
+
+    }
 }
-
-// function addTag(event) {
-//   event.preventDefault();
-//   if (category.value === '' || minutes.value === '' || seconds.value === '') {
-//   var node = document.createElement("p");
-//   var textnode = document.createTextNode("message or whatevs");
-//   node.appendChild(textnode);
-//   document.getElementById("userInputOne").appendChild(node);
-//   }
-// }
-
-// function showErrorMsg(event) {
-//   event.preventDefault();
-//   var errorElement = document.createElement("p");
-//   errorElement.id = "errorMsg"
-//   errorElement.className = "error-message";
-//   errorElement.innerHTML = '<p>A description is required.</p>'
-//   document.getElementById("userInputOne").appendChild(errorElement);
-//   console.log(event.target);
-// }
-
-// display error message (see comp) if form is submitted without filling out all fields
-// use innerHTML
-// create function showErrorMsg()
-// error msg has img and states 'A description is required.'
-
-// add element for p tag with img
-
 
 
 
