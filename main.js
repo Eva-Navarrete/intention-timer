@@ -1,47 +1,68 @@
 // QUERYSELECTORS
 
 var selectCategoryContainer = document.querySelector('#formContainer');
-var studyBtn = document.querySelector('#studyWrapper');
-var meditateBtn = document.querySelector('#meditateWrapper');
-var exerciseBtn = document.querySelector('#exerciseWrapper');
 var wrapper = document.querySelector('#wrapper');
-var startActivityButton = document.querySelector('#startActivityButton');
 var category = document.querySelector('#userInputOne');
 var minutes = document.querySelector('#minutesInput');
 var seconds = document.querySelector('#secondsInput');
+
+var startActivityButton = document.querySelector('#startActivityButton');
+var studyBtn = document.querySelector('#studyWrapper');
+var meditateBtn = document.querySelector('#meditateWrapper');
+var exerciseBtn = document.querySelector('#exerciseWrapper');
+var studyClickedBtn = document.querySelector('.study-wrapper');
+var meditateClickedBtn = document.querySelector('.meditate-wrapper');
+var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
+
 var studyImg = document.querySelector('#studyLogo');
 var meditateImg = document.querySelector('#meditateLogo');
 var exerciseImg = document.querySelector('#exerciseLogo');
+
 
 wrapper.addEventListener('click', changeColor);
 startActivityButton.addEventListener('click', submitActivityInfo);
 
 function changeColor() {
   event.preventDefault();
-  console.log(event.target)
   if(event.target.id === 'studyWrapper') {
-    studyImg.src = `assets/study-active.svg`
-    studyBtn.style.borderColor = "#B3FD78";
-    studyBtn.style.color = "#B3FD78";
+    changeStudyButton();
   } else if (event.target.id === 'meditateWrapper') {
-    meditateImg.src = `assets/meditate-active.svg`
-    meditateBtn.style.borderColor = "#C278FD";
-    meditateBtn.style.color = "#C278FD";
+    changeMeditateButton()
   } else if (event.target.id === 'exerciseWrapper') {
-    exerciseImg.src = `assets/exercise-active.svg`
-    exerciseBtn.style.borderColor = "#FD8078";
-    exerciseBtn.style.color = "#FD8078";
+    changeExerciseButton()
     }
   };
 
-  function submitActivityInfo() {
-    var activityInfo = {
-      activityName: activityName.value,
-      minutes: minutesInfo.value,
-      seconds: secondsInfo.value
-    }
-  }
+// *functions still need to revert img back to original
+function changeStudyButton() {
+  exerciseClickedBtn.classList.remove('exercise-clicked');
+  meditateClickedBtn.classList.remove('meditate-clicked');
+  studyClickedBtn.classList.add('study-clicked');
+  studyImg.src = `assets/study-active.svg`;
+}
 
+function changeMeditateButton() {
+  exerciseClickedBtn.classList.remove('exercise-clicked');
+  meditateClickedBtn.classList.add('meditate-clicked');
+  studyClickedBtn.classList.remove('study-clicked');
+  meditateImg.src = `assets/meditate-active.svg`;
+}
+
+function changeExerciseButton() {
+  exerciseClickedBtn.classList.add('exercise-clicked');
+  meditateClickedBtn.classList.remove('meditate-clicked');
+  studyClickedBtn.classList.remove('study-clicked');
+  exerciseImg.src = `assets/exercise-active.svg`;
+}
+
+
+// function submitActivityInfo() {
+//   var activityInfo = {
+//     activityName: activityName.value,
+//     minutes: minutesInfo.value,
+//     seconds: secondsInfo.value
+//   }
+// }
 
 
 
