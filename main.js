@@ -98,7 +98,7 @@ function addErrorMessage(event) {
           errorImg3.classList.add('hidden');
     }
     createNewActivity();
-    hideFormView();
+
 
 }
 
@@ -118,6 +118,7 @@ function createNewActivity() {
 //  completed.value = null;
   savedActivities.push(currentActivity);
 }
+
 var timerPage = document.querySelector('.timer');
 
 function hideFormView() {
