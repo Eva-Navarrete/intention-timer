@@ -2,7 +2,7 @@
 
 var selectCategoryContainer = document.querySelector('#formContainer');
 var wrapper = document.querySelector('#wrapper');
-var category = document.querySelector('#userInputOne');
+var description = document.querySelector('#userInputOne');
 var minutes = document.querySelector('#minutesInput');
 var seconds = document.querySelector('#secondsInput');
 var errorText = document.querySelector('#errorText')
@@ -16,6 +16,7 @@ var exerciseBtn = document.querySelector('#exerciseWrapper');
 var studyClickedBtn = document.querySelector('.study-wrapper');
 var meditateClickedBtn = document.querySelector('.meditate-wrapper');
 var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
+var category = document.querySelector('.category-button');
 
 var studyImg = document.querySelector('#studyLogo');
 var meditateImg = document.querySelector('#meditateLogo');
@@ -26,9 +27,9 @@ var errorImg3 = document.querySelector('#errorImage3');
 
 
 
-
 wrapper.addEventListener('click', changeColor);
-startActivityButton.addEventListener('click', addErrorMessage);
+startActivityButton.addEventListener('click', addErrorMessage)
+;
 
 function changeColor() {
   event.preventDefault();
@@ -70,8 +71,9 @@ function changeExerciseButton() {
 
 
 function addErrorMessage(event) {
+
     event.preventDefault();
-    if(!category.value) {
+    if(!description.value) {
       errorImg.classList.remove('hidden');
       errorText.classList.remove('hidden');
     } if (!minutes.value) {
@@ -80,7 +82,7 @@ function addErrorMessage(event) {
     } if (!seconds.value) {
         errorTextNums2.classList.remove('hidden');
         errorImg3.classList.remove('hidden');
-    } if (category.value) {
+    } if (description.value) {
       errorImg.classList.add('hidden');
       errorText.classList.add('hidden');
     }  if (minutes.value) {
@@ -90,20 +92,34 @@ function addErrorMessage(event) {
           errorTextNums2.classList.add('hidden');
           errorImg3.classList.add('hidden');
   }
+  createNewActivity();
 }
 
+// A Start Activity button is provided to submit the data entered into the form. When the button is clicked, update your data model with an instance of the Activity class.
+// declare global var savedActivities [], currentActvity
 
-function submitActivityInfo() {
-  var activityInfo = {
-    activityName: activityName.value,
-    minutes: minutesInfo.value,
-    seconds: secondsInfo.value
-  }
-}
+// create function to hold information as a new instance of activity class
+//then it will push into savedactivites array
+//then display on dom // hide form, show timer
 
 //Global Variable
+var savedActivities = [];
+var currentActvity;
 
+function createNewActivity() {
+  currentActvity = new Activity(category, description, minutes, seconds)
+  category = category.value;
+  description = description.value;
+  minutes = minutes.value;
+  seconds = seconds.value;
+//  completed.value = null;
+console.log(currentActvity);
 
+}
+
+//get data from form
+//button clicked - update data model w/instance
+//show on DOM
 
 
 
