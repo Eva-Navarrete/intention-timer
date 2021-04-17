@@ -1,5 +1,4 @@
 // QUERYSELECTORS
-
 var selectCategoryContainer = document.querySelector('#formContainer');
 var wrapper = document.querySelector('#wrapper');
 var description = document.querySelector('#userInputOne');
@@ -9,6 +8,7 @@ var errorText = document.querySelector('#errorText')
 var errorTextNums = document.querySelector('#errorTextNumbers')
 var errorTextNums2 = document.querySelector('#errorTextNumbers2')
 
+// Button Variables
 var startActivityButton = document.querySelector('#startActivityButton');
 var studyBtn = document.querySelector('#studyWrapper');
 var meditateBtn = document.querySelector('#meditateWrapper');
@@ -18,6 +18,7 @@ var meditateClickedBtn = document.querySelector('.meditate-wrapper');
 var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
 var category = document.querySelector('.category-button');
 
+// Image Variables
 var studyImg = document.querySelector('#studyLogo');
 var meditateImg = document.querySelector('#meditateLogo');
 var exerciseImg = document.querySelector('#exerciseLogo');
@@ -25,11 +26,16 @@ var errorImg = document.querySelector('#errorImage');
 var errorImg2 = document.querySelector('#errorImage2');
 var errorImg3 = document.querySelector('#errorImage3');
 
+// Global Variable
+var savedActivities = [];
+var currentActivity;
 
-
+// Event Listeners
 wrapper.addEventListener('click', changeColor);
-startActivityButton.addEventListener('click', addErrorMessage)
-;
+startActivityButton.addEventListener('click', addErrorMessage);
+minutes.addEventListener('keydown', preventE);
+seconds.addEventListener('keydown', preventE);
+
 
 function changeColor() {
   event.preventDefault();
@@ -39,8 +45,8 @@ function changeColor() {
     changeMeditateButton();
   } else if (event.target.id === 'exerciseWrapper') {
     changeExerciseButton();
-    }
-  };
+  }
+}
 
 function changeStudyButton() {
   exerciseClickedBtn.classList.remove('exercise-clicked');
@@ -71,7 +77,6 @@ function changeExerciseButton() {
 
 
 function addErrorMessage(event) {
-
     event.preventDefault();
     if(!description.value) {
       errorImg.classList.remove('hidden');
@@ -85,20 +90,22 @@ function addErrorMessage(event) {
     } if (description.value) {
       errorImg.classList.add('hidden');
       errorText.classList.add('hidden');
-    }  if (minutes.value) {
+    } if (minutes.value) {
           errorTextNums.classList.add('hidden');
           errorImg2.classList.add('hidden');
     } if (seconds.value) {
           errorTextNums2.classList.add('hidden');
           errorImg3.classList.add('hidden');
-  }
-  createNewActivity();
+    }
+    createNewActivity();
 }
 
-
-//Global Variable
-var savedActivities = [];
-var currentActivity;
+function preventE(e) {
+  var invalidChars = ["e"]
+  if (invalidChars.includes(e.key)) {
+    e.preventDefault();
+  }
+}
 
 function createNewActivity() {
   currentActivity = new Activity(category.value, description.value, minutes.value, seconds.value)
@@ -108,7 +115,6 @@ function createNewActivity() {
   seconds.innerText = seconds.value;
 //  completed.value = null;
   savedActivities.push(currentActivity);
-
 }
 
 
