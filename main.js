@@ -76,34 +76,81 @@ function changeExerciseButton() {
 }
 
 
+// function addErrorMessage(event) {
+//     event.preventDefault();
+//     if(!description.value) {
+//       errorImg.classList.remove('hidden');
+//       errorText.classList.remove('hidden');
+//     } if (!minutes.value) {
+//         errorTextNums.classList.remove('hidden');
+//         errorImg2.classList.remove('hidden');
+//     } if (!seconds.value) {
+//         errorTextNums2.classList.remove('hidden');
+//         errorImg3.classList.remove('hidden');
+//     } if (description.value) {
+//       errorImg.classList.add('hidden');
+//       errorText.classList.add('hidden');
+//     } if (minutes.value) {
+//           errorTextNums.classList.add('hidden');
+//           errorImg2.classList.add('hidden');
+//     } if (seconds.value) {
+//           errorTextNums2.classList.add('hidden');
+//           errorImg3.classList.add('hidden');
+//     }
+//     hideFormView();
+//createNewActivity();
+// }
+
 function addErrorMessage(event) {
     event.preventDefault();
-    if(!description.value) {
-      errorImg.classList.remove('hidden');
-      errorText.classList.remove('hidden');
-    } if (!minutes.value) {
-        errorTextNums.classList.remove('hidden');
-        errorImg2.classList.remove('hidden');
-    } if (!seconds.value) {
-        errorTextNums2.classList.remove('hidden');
-        errorImg3.classList.remove('hidden');
-    } if (description.value) {
-      errorImg.classList.add('hidden');
-      errorText.classList.add('hidden');
-    } if (minutes.value) {
-          errorTextNums.classList.add('hidden');
-          errorImg2.classList.add('hidden');
-    } if (seconds.value) {
-          errorTextNums2.classList.add('hidden');
-          errorImg3.classList.add('hidden');
-    }
-    createNewActivity();
+    descriptionError();
+    minutesError();
+    secondsError();
     hideFormView();
+}
 
+// function categoryError() {
+//   if(!category.value) {
+//     NEEDTHISINHTML.classList.remove('hidden');
+//     NEEDTHISINHTML.classList.remove('hidden');
+// } else if (category.value) {
+//   NEEDTHISINHTML.classList.add('hidden');
+//   NEEDTHISINHTML.classList.add('hidden');
+//   }
+//}
+
+function descriptionError() {
+  if(!description.value) {
+    errorText.classList.remove('hidden');
+    errorImg.classList.remove('hidden');
+} else if (description.value) {
+    errorText.classList.add('hidden');
+    errorImg.classList.add('hidden');
+  }
+}
+
+function minutesError() {
+  if(!minutes.value) {
+    errorTextNums.classList.remove('hidden');
+    errorImg2.classList.remove('hidden');
+} else if (minutes.value) {
+    errorTextNums.classList.add('hidden');
+    errorImg2.classList.add('hidden');
+  }
+}
+
+function secondsError() {
+  if(!seconds.value) {
+    errorTextNums2.classList.remove('hidden');
+    errorImg3.classList.remove('hidden');
+} else if (seconds.value) {
+    errorTextNums2.classList.add('hidden');
+    errorImg3.classList.add('hidden');
+  }
 }
 
 function preventE(e) {
-  var invalidChars = ["e"]
+  var invalidChars = ["e", "0"]
   if (invalidChars.includes(e.key)) {
     e.preventDefault();
   }
@@ -111,19 +158,23 @@ function preventE(e) {
 
 function createNewActivity() {
   currentActivity = new Activity(category.value, description.value, minutes.value, seconds.value)
-  category.innerText = category.value;
-  description.innerText = description.value;
-  minutes.innerText = minutes.value;
-  seconds.innerText = seconds.value;
+  category = category.value;
+  description = description.value;
+  minutes = minutes.value;
+  seconds = seconds.value;
 //  completed.value = null;
   savedActivities.push(currentActivity);
+  console.log(currentActivity)
 }
 
 var timerPage = document.querySelector('.timer');
 
 function hideFormView() {
-selectCategoryContainer.classList.add('hidden');
-timerPage.classList.remove('hidden');
+  if(description.value && minutes.value && seconds.value) {
+    createNewActivity();
+    selectCategoryContainer.classList.add('hidden');
+    timerPage.classList.remove('hidden');
+  }
 }
 
 
