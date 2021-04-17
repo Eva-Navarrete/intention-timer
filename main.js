@@ -98,7 +98,7 @@ function addErrorMessage(event) {
           errorImg3.classList.add('hidden');
     }
     createNewActivity();
-
+    hideFormView();
 
 }
 
