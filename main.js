@@ -4,9 +4,10 @@ var wrapper = document.querySelector('#wrapper');
 var description = document.querySelector('#userInputOne');
 var minutes = document.querySelector('#minutesInput');
 var seconds = document.querySelector('#secondsInput');
-var errorText = document.querySelector('#errorText')
-var errorTextNums = document.querySelector('#errorTextNumbers')
-var errorTextNums2 = document.querySelector('#errorTextNumbers2')
+var errorText = document.querySelector('#errorText');
+var errorTextNums = document.querySelector('#errorTextNumbers');
+var errorTextNums2 = document.querySelector('#errorTextNumbers2');
+var errorTextCategory = document.querySelector('#errorTextCategory');
 
 // Button Variables
 var startActivityButton = document.querySelector('#startActivityButton');
@@ -25,6 +26,8 @@ var exerciseImg = document.querySelector('#exerciseLogo');
 var errorImg = document.querySelector('#errorImage');
 var errorImg2 = document.querySelector('#errorImage2');
 var errorImg3 = document.querySelector('#errorImage3');
+var errorImg4 = document.querySelector('#errorImageCategory');
+
 
 // Global Variable
 var savedActivities = [];
@@ -41,12 +44,23 @@ function changeColor() {
   event.preventDefault();
   if(event.target.id === 'studyWrapper') {
     changeStudyButton();
+    category.value = 'study';
   } else if (event.target.id === 'meditateWrapper') {
     changeMeditateButton();
+    category.value = 'meditate';
   } else if (event.target.id === 'exerciseWrapper') {
     changeExerciseButton();
+    category.value = 'exercise';
   }
 }
+
+// button.addEventListener("click", changeColor)
+//
+// function(evt) {
+//   var e = find.your.element.however.you.need();
+//   e.classList.toggle("highlight");
+// });
+
 
 function changeStudyButton() {
   exerciseClickedBtn.classList.remove('exercise-clicked');
@@ -78,32 +92,56 @@ function changeExerciseButton() {
 
 function addErrorMessage(event) {
     event.preventDefault();
-    if(!description.value) {
-      errorImg.classList.remove('hidden');
-      errorText.classList.remove('hidden');
-    } if (!minutes.value) {
-        errorTextNums.classList.remove('hidden');
-        errorImg2.classList.remove('hidden');
-    } if (!seconds.value) {
-        errorTextNums2.classList.remove('hidden');
-        errorImg3.classList.remove('hidden');
-    } if (description.value) {
-      errorImg.classList.add('hidden');
-      errorText.classList.add('hidden');
-    } if (minutes.value) {
-          errorTextNums.classList.add('hidden');
-          errorImg2.classList.add('hidden');
-    } if (seconds.value) {
-          errorTextNums2.classList.add('hidden');
-          errorImg3.classList.add('hidden');
-    }
-    createNewActivity();
+    categoryError();
+    descriptionError();
+    minutesError();
+    secondsError();
     hideFormView();
+}
 
+function categoryError() {
+  if(!category.value) {
+    errorTextCategory.classList.remove('hidden');
+    errorImg4.classList.remove('hidden');
+  } else if (category.value) {
+    errorTextCategory.classList.add('hidden');
+    errorImg4.classList.add('hidden');
+  }
+}
+
+
+function descriptionError() {
+  if(!description.value) {
+    errorText.classList.remove('hidden');
+    errorImg.classList.remove('hidden');
+} else if (description.value) {
+    errorText.classList.add('hidden');
+    errorImg.classList.add('hidden');
+  }
+}
+
+function minutesError() {
+  if(!minutes.value) {
+    errorTextNums.classList.remove('hidden');
+    errorImg2.classList.remove('hidden');
+} else if (minutes.value) {
+    errorTextNums.classList.add('hidden');
+    errorImg2.classList.add('hidden');
+  }
+}
+
+function secondsError() {
+  if(!seconds.value) {
+    errorTextNums2.classList.remove('hidden');
+    errorImg3.classList.remove('hidden');
+} else if (seconds.value) {
+    errorTextNums2.classList.add('hidden');
+    errorImg3.classList.add('hidden');
+  }
 }
 
 function preventE(e) {
-  var invalidChars = ["e"]
+  var invalidChars = ["e", "0"]
   if (invalidChars.includes(e.key)) {
     e.preventDefault();
   }
@@ -111,20 +149,25 @@ function preventE(e) {
 
 function createNewActivity() {
   currentActivity = new Activity(category.value, description.value, minutes.value, seconds.value)
-  category.innerText = category.value;
-  description.innerText = description.value;
-  minutes.innerText = minutes.value;
-  seconds.innerText = seconds.value;
+  category = category.value;
+  description = description.value;
+  minutes = minutes.value;
+  seconds = seconds.value;
 //  completed.value = null;
+  console.log(currentActivity)
   savedActivities.push(currentActivity);
 }
 
 var timerPage = document.querySelector('.timer');
 
 function hideFormView() {
-selectCategoryContainer.classList.add('hidden');
-timerPage.classList.remove('hidden');
+  if(category.value && description.value && minutes.value && seconds.value) {
+    createNewActivity();
+    selectCategoryContainer.classList.add('hidden');
+    timerPage.classList.remove('hidden');
+  }
 }
+
 
 
 

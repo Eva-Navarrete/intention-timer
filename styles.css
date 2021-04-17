@@ -99,16 +99,19 @@ h1 {
 .study-clicked {
   border-color: #B3FD78;
   color: #B3FD78;
+  outline: none;
 }
 
 .meditate-clicked {
   border-color: #C278FD;
   color: #C278FD;
+  outline: none;
 }
 
 .exercise-clicked {
   border-color: #FD8078;
   color: #FD8078;
+  outline: none;
 }
 
 .logo {
@@ -160,8 +163,7 @@ h1 {
   border-radius: 50%;
   outline: none;
   background: #46424D;
-  border-color: green;
-  border: 1px solid;
+  border: 1px solid #B3FD78;
   padding: 9em;
 }
 
