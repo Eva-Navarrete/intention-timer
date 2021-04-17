@@ -5,6 +5,9 @@ var wrapper = document.querySelector('#wrapper');
 var category = document.querySelector('#userInputOne');
 var minutes = document.querySelector('#minutesInput');
 var seconds = document.querySelector('#secondsInput');
+var errorText = document.querySelector('#errorText')
+var errorTextNums = document.querySelector('#errorTextNumbers')
+var errorTextNums2 = document.querySelector('#errorTextNumbers2')
 
 var startActivityButton = document.querySelector('#startActivityButton');
 var studyBtn = document.querySelector('#studyWrapper');
@@ -17,7 +20,11 @@ var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
 var studyImg = document.querySelector('#studyLogo');
 var meditateImg = document.querySelector('#meditateLogo');
 var exerciseImg = document.querySelector('#exerciseLogo');
-var errorImg = document.querySelector('.error-image')
+var errorImg = document.querySelector('#errorImage');
+var errorImg2 = document.querySelector('#errorImage2');
+var errorImg3 = document.querySelector('#errorImage3');
+
+
 
 
 wrapper.addEventListener('click', changeColor);
@@ -28,18 +35,19 @@ function changeColor() {
   if(event.target.id === 'studyWrapper') {
     changeStudyButton();
   } else if (event.target.id === 'meditateWrapper') {
-    changeMeditateButton()
+    changeMeditateButton();
   } else if (event.target.id === 'exerciseWrapper') {
-    changeExerciseButton()
+    changeExerciseButton();
     }
   };
 
-// *functions still need to revert img back to original
 function changeStudyButton() {
   exerciseClickedBtn.classList.remove('exercise-clicked');
   meditateClickedBtn.classList.remove('meditate-clicked');
   studyClickedBtn.classList.add('study-clicked');
   studyImg.src = `assets/study-active.svg`;
+  meditateImg.src = `assets/meditate.svg`;
+  exerciseImg.src = `assets/exercise.svg`;
 }
 
 function changeMeditateButton() {
@@ -47,6 +55,8 @@ function changeMeditateButton() {
   meditateClickedBtn.classList.add('meditate-clicked');
   studyClickedBtn.classList.remove('study-clicked');
   meditateImg.src = `assets/meditate-active.svg`;
+  studyImg.src = `assets/study.svg`;
+  exerciseImg.src = `assets/exercise.svg`;
 }
 
 function changeExerciseButton() {
@@ -54,31 +64,44 @@ function changeExerciseButton() {
   meditateClickedBtn.classList.remove('meditate-clicked');
   studyClickedBtn.classList.remove('study-clicked');
   exerciseImg.src = `assets/exercise-active.svg`;
+  meditateImg.src = `assets/meditate.svg`;
+  studyImg.src = `assets/study.svg`;
 }
 
+
 function addErrorMessage(event) {
-  event.preventDefault();
-  if (!category.value || !minutes.value || !seconds.value ) {
-    var errorElement = document.createElement("p");
-      var errorMsg = document.createTextNode("A description is required.");
-      errorElement.appendChild(errorMsg);
-      document.getElementById("inputOne").appendChild(errorElement);
+    event.preventDefault();
+    if(!category.value) {
       errorImg.classList.remove('hidden');
-    }
+      errorText.classList.remove('hidden');
+    } if (!minutes.value) {
+        errorTextNums.classList.remove('hidden');
+        errorImg2.classList.remove('hidden');
+    } if (!seconds.value) {
+        errorTextNums2.classList.remove('hidden');
+        errorImg3.classList.remove('hidden');
+    } if (category.value) {
+      errorImg.classList.add('hidden');
+      errorText.classList.add('hidden');
+    }  if (minutes.value) {
+          errorTextNums.classList.add('hidden');
+          errorImg2.classList.add('hidden');
+    } if (seconds.value) {
+          errorTextNums2.classList.add('hidden');
+          errorImg3.classList.add('hidden');
   }
+}
 
 
+function submitActivityInfo() {
+  var activityInfo = {
+    activityName: activityName.value,
+    minutes: minutesInfo.value,
+    seconds: secondsInfo.value
+  }
+}
 
-
-
-// function submitActivityInfo() {
-//   var activityInfo = {
-//     activityName: activityName.value,
-//     minutes: minutesInfo.value,
-//     seconds: secondsInfo.value
-//   }
-// }
-
+//Global Variable
 
 
 
