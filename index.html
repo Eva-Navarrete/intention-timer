@@ -8,7 +8,7 @@
   <body>
     <header>INTENTION TIMER</header>
     <main>
-      <section class="new-activity" id="newActivity">
+      <section class="new-activity " id="newActivity">
         <h1>New Activity</h1>
         <form class="container" id="formContainer">
           <h2>Select a category:</h2>
@@ -36,6 +36,13 @@
             <img class="error-image hidden" id="errorImage3" src="assets/warning.svg">
             <button class="start-activity-button" id="startActivityButton" type="button">START ACTIVITY</button>
           </div>
+        </form>
+        <form class="timer container hidden" id="timer">
+          <p class="description-input" id="descriptionInput">Chill Time</p>
+          <p class="timer-countdown"id="timerCountdown">5:00</p>
+          <button class="circle-timer" id="circleTimer" type="button">START</button>
+          <button class="log-activity" id="logActivity" type="button">Log Activity</button>
+
         </form>
       </section>
       <section class="past-activities" id="pastActivities">

@@ -98,6 +98,8 @@ function addErrorMessage(event) {
           errorImg3.classList.add('hidden');
     }
     createNewActivity();
+    hideFormView();
+
 }
 
 function preventE(e) {
@@ -116,6 +118,14 @@ function createNewActivity() {
 //  completed.value = null;
   savedActivities.push(currentActivity);
 }
+
+var timerPage = document.querySelector('.timer');
+
+function hideFormView() {
+selectCategoryContainer.classList.add('hidden');
+timerPage.classList.remove('hidden');
+}
+
 
 
 // When the Start Activity button is clicked, the user should no longer see the form, and instead see a timer clock. The timer clock should display the user-provided minutes and seconds, as well as the description. The category should not appear, but the outline of the circle should match the color associated with the category.

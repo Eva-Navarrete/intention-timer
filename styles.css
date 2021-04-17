@@ -156,6 +156,14 @@ h1 {
 .error-image {
   height: 2vh;
 }
+.circle-timer {
+  border-radius: 50%;
+  outline: none;
+  background: #46424D;
+  border-color: green;
+  border: 1px solid;
+  padding: 9em;
+}
 
 .hidden {
   display: none;
