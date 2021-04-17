@@ -141,6 +141,7 @@ function secondsError() {
 }
 
 function preventE(e) {
+  console.log(minutes.value);
   var invalidChars = ["e", "0"]
   if (invalidChars.includes(e.key)) {
     e.preventDefault();
@@ -148,14 +149,15 @@ function preventE(e) {
 }
 
 function createNewActivity() {
-  currentActivity = new Activity(category.value, description.value, minutes.value, seconds.value)
+  currentActivity = new Activity(category.value, description.value, Number.parseInt(minutes.value), Number.parseInt(seconds.value));
   category = category.value;
   description = description.value;
-  minutes = minutes.value;
-  seconds = seconds.value;
+  minutes = Number.parseInt(minutes.value);
+  seconds = Number.parseInt(seconds.value);
 //  completed.value = null;
-  console.log(currentActivity)
+  console.log(currentActivity);
   savedActivities.push(currentActivity);
+  ///make numbers numbers
 }
 
 var timerPage = document.querySelector('.timer');
@@ -168,13 +170,15 @@ function hideFormView() {
   }
 }
 
+// hide container
+// interpolate user description, minutes & seconds to the timer timerCountdown
+// category should not appear
+// circle color should match category
 
+function timerView() {
+  // access last activitvy
+  savedActivities[savedActivities.length -1];
+  // calling the activity we need
+  currentActivity.beginTimer();
 
-
-// When the Start Activity button is clicked, the user should no longer see the form, and instead see a timer clock. The timer clock should display the user-provided minutes and seconds, as well as the description. The category should not appear, but the outline of the circle should match the color associated with the category.
-
-// 🤩 dqs form add classlist hidden to form section (SEARCH HOW TO MAKE TIMER) make time appear when form is hidden that takes in data from input.value from minutes/seconds/inputs in an innerHTML` with interpolation of an element with input values` for timer and also labe; of activity. change "New Activity" to "Currretn Activty" within this function
-
-// If the Start Activity button is clicked before the user has entered information into all four inputs, the user will receive an error message, but will not lose any information that was provided.
-
-// 🤩 add preventdefault event to prevent user losing any input info when missed in input field display similiar error message from before.
+}
