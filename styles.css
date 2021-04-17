@@ -99,16 +99,19 @@ h1 {
 .study-clicked {
   border-color: #B3FD78;
   color: #B3FD78;
+  outline: none;
 }
 
 .meditate-clicked {
   border-color: #C278FD;
   color: #C278FD;
+  outline: none;
 }
 
 .exercise-clicked {
   border-color: #FD8078;
   color: #FD8078;
+  outline: none;
 }
 
 .logo {

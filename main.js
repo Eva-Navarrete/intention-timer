@@ -40,7 +40,6 @@ minutes.addEventListener('keydown', preventE);
 seconds.addEventListener('keydown', preventE);
 
 
-
 function changeColor() {
   event.preventDefault();
   if(event.target.id === 'studyWrapper') {
@@ -54,6 +53,13 @@ function changeColor() {
     category.value = 'exercise';
   }
 }
+
+// button.addEventListener("click", changeColor)
+//
+// function(evt) {
+//   var e = find.your.element.however.you.need();
+//   e.classList.toggle("highlight");
+// });
 
 
 function changeStudyButton() {
@@ -92,7 +98,6 @@ function addErrorMessage(event) {
     secondsError();
     hideFormView();
 }
-
 
 function categoryError() {
   if(!category.value) {
@@ -149,8 +154,8 @@ function createNewActivity() {
   minutes = minutes.value;
   seconds = seconds.value;
 //  completed.value = null;
-  savedActivities.push(currentActivity);
   console.log(currentActivity)
+  savedActivities.push(currentActivity);
 }
 
 var timerPage = document.querySelector('.timer');
@@ -162,6 +167,7 @@ function hideFormView() {
     timerPage.classList.remove('hidden');
   }
 }
+
 
 
 
