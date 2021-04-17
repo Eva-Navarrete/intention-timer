@@ -7,14 +7,16 @@ class Activity {
     this.seconds = seconds;
     this.completed = false;
   }
+
   beginTimer() {
 
   }
+
   markComplete() {
 
   }
+
   saveToStorage() {
 
   }
-
 }
