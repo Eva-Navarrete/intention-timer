@@ -95,47 +95,22 @@ function addErrorMessage(event) {
   createNewActivity();
 }
 
-// A Start Activity button is provided to submit the data entered into the form. When the button is clicked, update your data model with an instance of the Activity class.
-// declare global var savedActivities [], currentActvity
-
-// create function to hold information as a new instance of activity class
-//then it will push into savedactivites array
-//then display on dom // hide form, show timer
 
 //Global Variable
 var savedActivities = [];
-var currentActvity;
+var currentActivity;
 
 function createNewActivity() {
-  currentActvity = new Activity(category, description, minutes, seconds)
-  category = category.value;
-  description = description.value;
-  minutes = minutes.value;
-  seconds = seconds.value;
+  currentActivity = new Activity(category.value, description.value, minutes.value, seconds.value)
+  category.innerText = category.value;
+  description.innerText = description.value;
+  minutes.innerText = minutes.value;
+  seconds.innerText = seconds.value;
 //  completed.value = null;
-console.log(currentActvity);
+  savedActivities.push(currentActivity);
 
 }
 
-//get data from form
-//button clicked - update data model w/instance
-//show on DOM
-
-
-
-
-
-// An input field should be provided for What would you like to accomplish during this time?, minutes and seconds. The minutes and seconds fields should only accept numbers. (Hint: more than one layer should probably be put into place to ensure this. Make sure that e cannot be accepted.)
-
-// 🤩DUNZOO ^^ maybe..???
-
-// A user should see an error message if they attempt to submit the form without filling out all fields. (Note: The comp shows the error message for forgetting a description - You should mimic this error messaging for all inputs.)
-
-// 🤩target the input fields with dqs add event target.value where function takes a conditional where if input.value is null/undefined return and error message that matches comp else submit it.
-
-// A Start Activity button is provided to submit the data entered into the form. When the button is clicked, update your data model with an instance of the Activity class.
-
-//🤩add DQS to activity button to submit/push instance to saved activity array.it has to be sent to DATA MODEL not just on the DOM. DATA MODEL IS OUR SOURCE OF TRUTH!!
 
 // When the Start Activity button is clicked, the user should no longer see the form, and instead see a timer clock. The timer clock should display the user-provided minutes and seconds, as well as the description. The category should not appear, but the outline of the circle should match the color associated with the category.
 
