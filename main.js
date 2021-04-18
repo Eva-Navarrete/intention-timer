@@ -10,6 +10,8 @@ var errorTextNums2 = document.querySelector('#errorTextNumbers2');
 var errorTextCategory = document.querySelector('#errorTextCategory');
 var timerPage = document.querySelector('.timer');
 var displayTimer = document.querySelector('#displayTimer');
+var descriptionInput = document.querySelector('#descriptionInput');
+var timerCountdown = document.querySelector('#timerCountdown');
 
 // Button Variables
 var startActivityButton = document.querySelector('#startActivityButton');
@@ -159,8 +161,6 @@ function createNewActivity() {
   savedActivities.push(currentActivity);
 }
 
-
-
 function hideFormView() {
   if (category.value && description.value && minuteInput.value && secondInput.value) {
     createNewActivity();
@@ -169,34 +169,20 @@ function hideFormView() {
     showTimer();
   }
   changeCountdownColor();
-
-
 }
-
-var descriptionInput = document.querySelector('#descriptionInput');
-var timerCountdown = document.querySelector('#timerCountdown');
 
 function showTimer() {
-descriptionInput.innerText = currentActivity.description;
-timerCountdown.innerText = `${currentActivity.minutes} : ${currentActivity.minutes}`;
-  // displayTimer.innerHTML = '';
-  // displayTimer.innerHTML += `
-  // <p class="description-input" id="descriptionInput">${currentActivity.description}</p>
-  // <p class="timer-countdown"id="timerCountdown">${currentActivity.minutes}: ${currentActivity.minutes}</p>
-  //
-  // `;
-
+  descriptionInput.innerText = currentActivity.description;
+  timerCountdown.innerText = `${currentActivity.minutes} : ${currentActivity.minutes}`;
 
 }
-
-
 
 function changeCountdownColor() {
   if (currentActivity.category === 'study') {
     circleTimerBtn.style.borderColor = '#B3FD78';
   } else if (currentActivity.category === 'meditate') {
-      circleTimerBtn.style.borderColor = '#C278FD';
-    } else if (currentActivity.category === 'exercise') {
-      circleTimerBtn.style.borderColor = '#FD8078';
-    }
+    circleTimerBtn.style.borderColor = '#C278FD';
+  } else if (currentActivity.category === 'exercise') {
+    circleTimerBtn.style.borderColor = '#FD8078';
   }
+}
