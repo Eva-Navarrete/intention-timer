@@ -9,6 +9,7 @@ var errorTextNums = document.querySelector('#errorTextNumbers');
 var errorTextNums2 = document.querySelector('#errorTextNumbers2');
 var errorTextCategory = document.querySelector('#errorTextCategory');
 var timerPage = document.querySelector('.timer');
+var displayTimer = document.querySelector('#displayTimer');
 
 // Button Variables
 var startActivityButton = document.querySelector('#startActivityButton');
@@ -19,6 +20,7 @@ var studyClickedBtn = document.querySelector('.study-wrapper');
 var meditateClickedBtn = document.querySelector('.meditate-wrapper');
 var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
 var category = document.querySelector('.category-button');
+var circleTimerBtn = document.querySelector('#circleTimer');
 
 // Image Variables
 var studyImg = document.querySelector('#studyLogo');
@@ -164,31 +166,37 @@ function hideFormView() {
     createNewActivity();
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
+    showTimer();
   }
-  dispalyTimer()
-}
-
-function dispalyTimer() {
-  timerPage.innerHTML = '';
-  timerPage.innerHTML += `
-  <p class="description-input" id="descriptionInput">${currentActivity.description}</p>
-  <p class="timer-countdown"id="timerCountdown">${currentActivity.minutes}: ${currentActivity.seconds}</p>
-  <button class="circle-timer" id="circleTimer" type="button">START</button>
-  `;
-
-
+  changeCountdownColor();
 
 
 }
 
+var descriptionInput = document.querySelector('#descriptionInput');
+var timerCountdown = document.querySelector('#timerCountdown');
+
+function showTimer() {
+descriptionInput.innerText = currentActivity.description;
+timerCountdown.innerText = `${currentActivity.minutes} : ${currentActivity.minutes}`;
+  // displayTimer.innerHTML = '';
+  // displayTimer.innerHTML += `
+  // <p class="description-input" id="descriptionInput">${currentActivity.description}</p>
+  // <p class="timer-countdown"id="timerCountdown">${currentActivity.minutes}: ${currentActivity.minutes}</p>
+  //
+  // `;
 
 
-// function changeCountdownColor() {
-//   if (currentActivity.category === 'Study') {
-//     blank.classList.
-//   } else if (=== 'Meditate') {
-//     blank.classList.
-//   } else (=== 'Exercise') {
-//     blank.classList
-//   }
-// }
+}
+
+
+
+function changeCountdownColor() {
+  if (currentActivity.category === 'study') {
+    circleTimerBtn.style.borderColor = '#B3FD78';
+  } else if (currentActivity.category === 'meditate') {
+      circleTimerBtn.style.borderColor = '#C278FD';
+    } else if (currentActivity.category === 'exercise') {
+      circleTimerBtn.style.borderColor = '#FD8078';
+    }
+  }
