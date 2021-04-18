@@ -168,11 +168,15 @@ h1 {
 }
 
 .circle-timer {
+  color: #CBC9CF;
+  font-size: 22px;
   border-radius: 50%;
   outline: none;
   background: #46424D;
-  border: 1px solid #B3FD78;
-  padding: 9em;
+  border: 2px solid white;
+  padding: 5em;
+  padding-right: 4.5em;
+  padding-left: 4.5em;
   margin: 3em;
 }
 .timer {
@@ -189,6 +193,7 @@ h1 {
 .description-input {
   font-size: 24px;
   margin: 0;
+  margin-top: 1.5em;
 }
 .hidden {
   display: none;
