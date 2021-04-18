@@ -8,6 +8,10 @@ var errorText = document.querySelector('#errorText');
 var errorTextNums = document.querySelector('#errorTextNumbers');
 var errorTextNums2 = document.querySelector('#errorTextNumbers2');
 var errorTextCategory = document.querySelector('#errorTextCategory');
+var timerPage = document.querySelector('.timer');
+var displayTimer = document.querySelector('#displayTimer');
+var descriptionInput = document.querySelector('#descriptionInput');
+var timerCountdown = document.querySelector('#timerCountdown');
 
 // Button Variables
 var startActivityButton = document.querySelector('#startActivityButton');
@@ -18,6 +22,7 @@ var studyClickedBtn = document.querySelector('.study-wrapper');
 var meditateClickedBtn = document.querySelector('.meditate-wrapper');
 var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
 var category = document.querySelector('.category-button');
+var circleTimerBtn = document.querySelector('#circleTimer');
 
 // Image Variables
 var studyImg = document.querySelector('#studyLogo');
@@ -42,7 +47,7 @@ secondInput.addEventListener('keydown', preventE);
 
 function changeColor() {
   event.preventDefault();
-  if(event.target.id === 'studyWrapper') {
+  if (event.target.id === 'studyWrapper') {
     changeStudyButton();
     category.value = 'study';
   } else if (event.target.id === 'meditateWrapper') {
@@ -90,16 +95,16 @@ function changeExerciseButton() {
 }
 
 function addErrorMessage(event) {
-    event.preventDefault();
-    categoryError();
-    descriptionError();
-    minutesError();
-    secondsError();
-    hideFormView();
+  event.preventDefault();
+  categoryError();
+  descriptionError();
+  minutesError();
+  secondsError();
+  hideFormView();
 }
 
 function categoryError() {
-  if(!category.value) {
+  if (!category.value) {
     errorTextCategory.classList.remove('hidden');
     errorImg4.classList.remove('hidden');
   } else if (category.value) {
@@ -109,30 +114,30 @@ function categoryError() {
 }
 
 function descriptionError() {
-  if(!description.value) {
+  if (!description.value) {
     errorText.classList.remove('hidden');
     errorImg.classList.remove('hidden');
-} else if (description.value) {
+  } else if (description.value) {
     errorText.classList.add('hidden');
     errorImg.classList.add('hidden');
   }
 }
 
 function minutesError() {
-  if(!minuteInput.value) {
+  if (!minuteInput.value) {
     errorTextNums.classList.remove('hidden');
     errorImg2.classList.remove('hidden');
-} else if (minuteInput.value) {
+  } else if (minuteInput.value) {
     errorTextNums.classList.add('hidden');
     errorImg2.classList.add('hidden');
   }
 }
 
 function secondsError() {
-  if(!secondInput.value) {
+  if (!secondInput.value) {
     errorTextNums2.classList.remove('hidden');
     errorImg3.classList.remove('hidden');
-} else if (secondInput.value) {
+  } else if (secondInput.value) {
     errorTextNums2.classList.add('hidden');
     errorImg3.classList.add('hidden');
   }
@@ -156,22 +161,28 @@ function createNewActivity() {
   savedActivities.push(currentActivity);
 }
 
-var timerPage = document.querySelector('.timer');
-
 function hideFormView() {
-  if(category.value && description.value && minuteInput.value && secondInput.value) {
+  if (category.value && description.value && minuteInput.value && secondInput.value) {
     createNewActivity();
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
+    showTimer();
   }
+  changeCountdownColor();
 }
 
-// function changeCountdownColor() {
-//   if (currentActivity.category === 'Study') {
-//     blank.classList.
-//   } else if (=== 'Meditate') {
-//     blank.classList.
-//   } else (=== 'Exercise') {
-//     blank.classList
-//   }
-// }
+function showTimer() {
+  descriptionInput.innerText = currentActivity.description;
+  timerCountdown.innerText = `${currentActivity.minutes} : ${currentActivity.minutes}`;
+
+}
+
+function changeCountdownColor() {
+  if (currentActivity.category === 'study') {
+    circleTimerBtn.style.borderColor = '#B3FD78';
+  } else if (currentActivity.category === 'meditate') {
+    circleTimerBtn.style.borderColor = '#C278FD';
+  } else if (currentActivity.category === 'exercise') {
+    circleTimerBtn.style.borderColor = '#FD8078';
+  }
+}

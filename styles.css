@@ -168,18 +168,38 @@ h1 {
 }
 
 .circle-timer {
+  color: #CBC9CF;
+  font-size: 22px;
   border-radius: 50%;
   outline: none;
   background: #46424D;
-  border: 1px solid #B3FD78;
-  padding: 9em;
+  border: 2px solid;
+  padding: 5em;
+  padding-right: 4.5em;
+  padding-left: 4.5em;
+  margin: 3em;
+}
+
+.timer,
+.display-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.timer-countdown{
+  font-size: 60px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.description-input {
+  font-size: 24px;
+  margin: 0;
+  margin-top: 1.5em;
 }
 
 .hidden {
   display: none;
 }
-/* .study-button,
-.study-logo {
-  height: 6em;
-
-} */
