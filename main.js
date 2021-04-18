@@ -42,7 +42,7 @@ var currentActivity;
 wrapper.addEventListener('click', changeColor);
 startActivityButton.addEventListener('click', addErrorMessage);
 minuteInput.addEventListener('keydown', preventE);
-secondInput.addEventListener('keydown', preventE);
+circleTimerBtn.addEventListener('click', startTimer);
 
 
 function changeColor() {
@@ -58,14 +58,6 @@ function changeColor() {
     category.value = 'exercise';
   }
 }
-
-// button.addEventListener("click", changeColor)
-//
-// function(evt) {
-//   var e = find.your.element.however.you.need();
-//   e.classList.toggle("highlight");
-// });
-
 
 function changeStudyButton() {
   exerciseClickedBtn.classList.remove('exercise-clicked');
@@ -144,7 +136,7 @@ function secondsError() {
 }
 
 function preventE(e) {
-  var invalidChars = ["e", "0"]
+  var invalidChars = ["e"]
   if (invalidChars.includes(e.key)) {
     e.preventDefault();
   }
@@ -157,7 +149,6 @@ function createNewActivity() {
   // minutes = Number.parseInt(minutes.value);
   // seconds = Number.parseInt(seconds.value);
   //  completed.value = null;
-  console.log(currentActivity);
   savedActivities.push(currentActivity);
 }
 
@@ -171,12 +162,6 @@ function hideFormView() {
   changeCountdownColor();
 }
 
-function showTimer() {
-  descriptionInput.innerText = currentActivity.description;
-  timerCountdown.innerText = `${currentActivity.minutes} : ${currentActivity.minutes}`;
-
-}
-
 function changeCountdownColor() {
   if (currentActivity.category === 'study') {
     circleTimerBtn.style.borderColor = '#B3FD78';
@@ -185,4 +170,43 @@ function changeCountdownColor() {
   } else if (currentActivity.category === 'exercise') {
     circleTimerBtn.style.borderColor = '#FD8078';
   }
+}
+
+function showTimer() {
+  descriptionInput.innerText = currentActivity.description;
+  clockFormat();
+}
+
+function clockFormat() {
+  var totalSec = parseInt(currentActivity.seconds);
+  var totalMin = parseInt(currentActivity.minutes * 60);
+  var time = totalSec + totalMin
+
+  var minutes =  Math.floor(time/60);
+  var seconds = time % 60;
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    timerCountdown.innerText = `${minutes}:${seconds}`
+}
+
+function startTimer() {
+  var totalSec = parseInt(currentActivity.seconds);
+  var totalMin = parseInt(currentActivity.minutes * 60);
+  var time = totalSec + totalMin
+
+  var timer = setInterval(function() {
+    var minutes =  Math.floor(time/60);
+    var seconds = time % 60;
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    timerCountdown.innerText = `${minutes}:${seconds}`
+    time--;
+
+    if (time === -1) {
+        clearInterval(timer);
+        timerCountdown.innerHTML = "00:00";
+         }
+    }, 1000);
 }
