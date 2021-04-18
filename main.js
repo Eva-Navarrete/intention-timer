@@ -89,7 +89,6 @@ function changeExerciseButton() {
   studyImg.src = `assets/study.svg`;
 }
 
-
 function addErrorMessage(event) {
     event.preventDefault();
     categoryError();
@@ -108,7 +107,6 @@ function categoryError() {
     errorImg4.classList.add('hidden');
   }
 }
-
 
 function descriptionError() {
   if(!description.value) {
@@ -168,31 +166,6 @@ function hideFormView() {
   }
 }
 
-
-// access last activitvy
-// savedActivities[savedActivities.length -1].beginTimer();
-// calling the activity we need
-
-
-
-
-//
-// var time = 100;
-// var countdownEl = document.querySelector('#timerCountdown');
-// function updateCountdown() {
-//   minutes = currentActivity.minutes.value
-//   seconds = Number.parseInt(seconds.value);
-//   countdownEl.innerHTML += `${minutes}: ${seconds}`;
-//   time--;
-//   console.log(countdown);
-// }
-
-  // var minutes = user
-  // var seconds = user
-  // seconds = seconds < 10 ? '0' + seconds : seconds;
-  // countdownEl.innerHTML = `${minutes}: ${seconds}`
-  // time--;
-//
 // function changeCountdownColor() {
 //   if (currentActivity.category === 'Study') {
 //     blank.classList.
