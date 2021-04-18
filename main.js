@@ -42,6 +42,7 @@ var currentActivity;
 wrapper.addEventListener('click', changeColor);
 startActivityButton.addEventListener('click', addErrorMessage);
 minuteInput.addEventListener('keydown', preventE);
+circleTimerBtn.addEventListener('click', startTimer);
 
 
 function changeColor() {
@@ -57,14 +58,6 @@ function changeColor() {
     category.value = 'exercise';
   }
 }
-
-// button.addEventListener("click", changeColor)
-//
-// function(evt) {
-//   var e = find.your.element.however.you.need();
-//   e.classList.toggle("highlight");
-// });
-
 
 function changeStudyButton() {
   exerciseClickedBtn.classList.remove('exercise-clicked');
@@ -156,7 +149,6 @@ function createNewActivity() {
   // minutes = Number.parseInt(minutes.value);
   // seconds = Number.parseInt(seconds.value);
   //  completed.value = null;
-  console.log(currentActivity);
   savedActivities.push(currentActivity);
 }
 
@@ -170,12 +162,6 @@ function hideFormView() {
   changeCountdownColor();
 }
 
-function showTimer() {
-  descriptionInput.innerText = currentActivity.description;
-  timerCountdown.innerText = `${currentActivity.minutes} : ${currentActivity.seconds}`;
-
-}
-
 function changeCountdownColor() {
   if (currentActivity.category === 'study') {
     circleTimerBtn.style.borderColor = '#B3FD78';
@@ -186,52 +172,41 @@ function changeCountdownColor() {
   }
 }
 
+function showTimer() {
+  descriptionInput.innerText = currentActivity.description;
+  clockFormat();
+}
 
-circleTimerBtn.addEventListener('click', startTimer);
+function clockFormat() {
+  var totalSec = parseInt(currentActivity.seconds);
+  var totalMin = parseInt(currentActivity.minutes * 60);
+  var time = totalSec + totalMin
 
-// function startTimer() {
-//   var seconds = currentActivity.seconds
-//   var minutes = currentActivity.minutes
-//     var timer = minutes, seconds;
-//     var time = setInterval(function () {
-//         minutes = parseInt(minutes / 60, 10);
-//         minutes = parseInt(seconds % 60, 10);
-//
-//         minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-//
-//         document.getElementById('timerCountdown').innerHTML=  minutes + ":" + seconds;
-//         --timer;
-//         if (--timer < 0) {
-//             clearInterval(time)
-//             document.getElementById("timerCountdown").innerHTML = "00:00";
-//         }
-//     }, 1000);
-// };
+  var minutes =  Math.floor(time/60);
+  var seconds = time % 60;
 
-
-
-
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    timerCountdown.innerText = `${minutes}:${seconds}`
+}
 
 function startTimer() {
-  var totalSec = currentActivity.seconds
-  var totalMin = currentActivity.minutes
-  // var totalTime = (currentActivity.minutes * 60) + currentActivity.seconds
+  var totalSec = parseInt(currentActivity.seconds);
+  var totalMin = parseInt(currentActivity.minutes * 60);
+  var time = totalSec + totalMin
 
   var timer = setInterval(function() {
+    var minutes =  Math.floor(time/60);
+    var seconds = time % 60;
 
-    totalMin = totalMin < 10 ? "0" + totalMin : totalMin;
-    totalSec = totalSec < 10 ? "0" + totalSec : totalSec;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    timerCountdown.innerText = `${minutes}:${seconds}`
+    time--;
 
-    document.getElementById('timerCountdown').innerHTML= totalMin + ":" + totalSec;
-    totalSec--;
-
-    if (totalMin >= 1 && totalSec === -1) {
-      totalSec--;
-      totalMin --;
-      totalSec = 59;
-    } else if (totalSec === -1) {
+    if (time === -1) {
         clearInterval(timer);
-        document.getElementById("timerCountdown").innerHTML = "00:00";      }
+        timerCountdown.innerHTML = "00:00";
+         }
     }, 1000);
 }
