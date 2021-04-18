@@ -2,8 +2,8 @@
 var selectCategoryContainer = document.querySelector('#formContainer');
 var wrapper = document.querySelector('#wrapper');
 var description = document.querySelector('#userInputOne');
-var minutes = document.querySelector('#minutesInput');
-var seconds = document.querySelector('#secondsInput');
+var minuteInput = document.querySelector('#minutesInput');
+var secondInput = document.querySelector('#secondsInput');
 var errorText = document.querySelector('#errorText');
 var errorTextNums = document.querySelector('#errorTextNumbers');
 var errorTextNums2 = document.querySelector('#errorTextNumbers2');
@@ -36,8 +36,8 @@ var currentActivity;
 // Event Listeners
 wrapper.addEventListener('click', changeColor);
 startActivityButton.addEventListener('click', addErrorMessage);
-minutes.addEventListener('keydown', preventE);
-seconds.addEventListener('keydown', preventE);
+minuteInput.addEventListener('keydown', preventE);
+secondInput.addEventListener('keydown', preventE);
 
 
 function changeColor() {
@@ -121,27 +121,26 @@ function descriptionError() {
 }
 
 function minutesError() {
-  if(!minutes.value) {
+  if(!minuteInput.value) {
     errorTextNums.classList.remove('hidden');
     errorImg2.classList.remove('hidden');
-} else if (minutes.value) {
+} else if (minuteInput.value) {
     errorTextNums.classList.add('hidden');
     errorImg2.classList.add('hidden');
   }
 }
 
 function secondsError() {
-  if(!seconds.value) {
+  if(!secondInput.value) {
     errorTextNums2.classList.remove('hidden');
     errorImg3.classList.remove('hidden');
-} else if (seconds.value) {
+} else if (secondInput.value) {
     errorTextNums2.classList.add('hidden');
     errorImg3.classList.add('hidden');
   }
 }
 
 function preventE(e) {
-  console.log(minutes.value);
   var invalidChars = ["e", "0"]
   if (invalidChars.includes(e.key)) {
     e.preventDefault();
@@ -149,36 +148,57 @@ function preventE(e) {
 }
 
 function createNewActivity() {
-  currentActivity = new Activity(category.value, description.value, Number.parseInt(minutes.value), Number.parseInt(seconds.value));
-  category = category.value;
-  description = description.value;
-  minutes = Number.parseInt(minutes.value);
-  seconds = Number.parseInt(seconds.value);
-//  completed.value = null;
+  currentActivity = new Activity(category.value, description.value, Number.parseInt(minuteInput.value), Number.parseInt(secondInput.value));
+  // category = category.value;
+  // description = description.value;
+  // minutes = Number.parseInt(minutes.value);
+  // seconds = Number.parseInt(seconds.value);
+  //  completed.value = null;
   console.log(currentActivity);
   savedActivities.push(currentActivity);
-  ///make numbers numbers
 }
 
 var timerPage = document.querySelector('.timer');
 
 function hideFormView() {
-  if(category.value && description.value && minutes.value && seconds.value) {
+  if(category.value && description.value && minuteInput.value && secondInput.value) {
     createNewActivity();
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
   }
 }
 
-// hide container
-// interpolate user description, minutes & seconds to the timer timerCountdown
-// category should not appear
-// circle color should match category
 
-function timerView() {
-  // access last activitvy
-  savedActivities[savedActivities.length -1];
-  // calling the activity we need
-  currentActivity.beginTimer();
+// access last activitvy
+// savedActivities[savedActivities.length -1].beginTimer();
+// calling the activity we need
 
-}
+
+
+
+//
+// var time = 100;
+// var countdownEl = document.querySelector('#timerCountdown');
+// function updateCountdown() {
+//   minutes = currentActivity.minutes.value
+//   seconds = Number.parseInt(seconds.value);
+//   countdownEl.innerHTML += `${minutes}: ${seconds}`;
+//   time--;
+//   console.log(countdown);
+// }
+
+  // var minutes = user
+  // var seconds = user
+  // seconds = seconds < 10 ? '0' + seconds : seconds;
+  // countdownEl.innerHTML = `${minutes}: ${seconds}`
+  // time--;
+//
+// function changeCountdownColor() {
+//   if (currentActivity.category === 'Study') {
+//     blank.classList.
+//   } else if (=== 'Meditate') {
+//     blank.classList.
+//   } else (=== 'Exercise') {
+//     blank.classList
+//   }
+// }
