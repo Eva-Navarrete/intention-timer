@@ -42,7 +42,6 @@ var currentActivity;
 wrapper.addEventListener('click', changeColor);
 startActivityButton.addEventListener('click', addErrorMessage);
 minuteInput.addEventListener('keydown', preventE);
-secondInput.addEventListener('keydown', preventE);
 
 
 function changeColor() {
@@ -144,7 +143,7 @@ function secondsError() {
 }
 
 function preventE(e) {
-  var invalidChars = ["e", "0"]
+  var invalidChars = ["e"]
   if (invalidChars.includes(e.key)) {
     e.preventDefault();
   }
@@ -173,7 +172,7 @@ function hideFormView() {
 
 function showTimer() {
   descriptionInput.innerText = currentActivity.description;
-  timerCountdown.innerText = `${currentActivity.minutes} : ${currentActivity.minutes}`;
+  timerCountdown.innerText = `${currentActivity.minutes} : ${currentActivity.seconds}`;
 
 }
 
@@ -185,4 +184,54 @@ function changeCountdownColor() {
   } else if (currentActivity.category === 'exercise') {
     circleTimerBtn.style.borderColor = '#FD8078';
   }
+}
+
+
+circleTimerBtn.addEventListener('click', startTimer);
+
+// function startTimer() {
+//   var seconds = currentActivity.seconds
+//   var minutes = currentActivity.minutes
+//     var timer = minutes, seconds;
+//     var time = setInterval(function () {
+//         minutes = parseInt(minutes / 60, 10);
+//         minutes = parseInt(seconds % 60, 10);
+//
+//         minutes = minutes < 10 ? "0" + minutes : minutes;
+//         seconds = seconds < 10 ? "0" + seconds : seconds;
+//
+//         document.getElementById('timerCountdown').innerHTML=  minutes + ":" + seconds;
+//         --timer;
+//         if (--timer < 0) {
+//             clearInterval(time)
+//             document.getElementById("timerCountdown").innerHTML = "00:00";
+//         }
+//     }, 1000);
+// };
+
+
+
+
+
+function startTimer() {
+  var totalSec = currentActivity.seconds
+  var totalMin = currentActivity.minutes
+  // var totalTime = (currentActivity.minutes * 60) + currentActivity.seconds
+
+  var timer = setInterval(function() {
+
+    totalMin = totalMin < 10 ? "0" + totalMin : totalMin;
+    totalSec = totalSec < 10 ? "0" + totalSec : totalSec;
+
+    document.getElementById('timerCountdown').innerHTML= totalMin + ":" + totalSec;
+    totalSec--;
+
+    if (totalMin >= 1 && totalSec === -1) {
+      totalSec--;
+      totalMin --;
+      totalSec = 59;
+    } else if (totalSec === -1) {
+        clearInterval(timer);
+        document.getElementById("timerCountdown").innerHTML = "00:00";      }
+    }, 1000);
 }
