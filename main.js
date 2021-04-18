@@ -42,7 +42,7 @@ secondInput.addEventListener('keydown', preventE);
 
 function changeColor() {
   event.preventDefault();
-  if(event.target.id === 'studyWrapper') {
+  if (event.target.id === 'studyWrapper') {
     changeStudyButton();
     category.value = 'study';
   } else if (event.target.id === 'meditateWrapper') {
@@ -90,16 +90,16 @@ function changeExerciseButton() {
 }
 
 function addErrorMessage(event) {
-    event.preventDefault();
-    categoryError();
-    descriptionError();
-    minutesError();
-    secondsError();
-    hideFormView();
+  event.preventDefault();
+  categoryError();
+  descriptionError();
+  minutesError();
+  secondsError();
+  hideFormView();
 }
 
 function categoryError() {
-  if(!category.value) {
+  if (!category.value) {
     errorTextCategory.classList.remove('hidden');
     errorImg4.classList.remove('hidden');
   } else if (category.value) {
@@ -109,30 +109,30 @@ function categoryError() {
 }
 
 function descriptionError() {
-  if(!description.value) {
+  if (!description.value) {
     errorText.classList.remove('hidden');
     errorImg.classList.remove('hidden');
-} else if (description.value) {
+  } else if (description.value) {
     errorText.classList.add('hidden');
     errorImg.classList.add('hidden');
   }
 }
 
 function minutesError() {
-  if(!minuteInput.value) {
+  if (!minuteInput.value) {
     errorTextNums.classList.remove('hidden');
     errorImg2.classList.remove('hidden');
-} else if (minuteInput.value) {
+  } else if (minuteInput.value) {
     errorTextNums.classList.add('hidden');
     errorImg2.classList.add('hidden');
   }
 }
 
 function secondsError() {
-  if(!secondInput.value) {
+  if (!secondInput.value) {
     errorTextNums2.classList.remove('hidden');
     errorImg3.classList.remove('hidden');
-} else if (secondInput.value) {
+  } else if (secondInput.value) {
     errorTextNums2.classList.add('hidden');
     errorImg3.classList.add('hidden');
   }
@@ -159,12 +159,28 @@ function createNewActivity() {
 var timerPage = document.querySelector('.timer');
 
 function hideFormView() {
-  if(category.value && description.value && minuteInput.value && secondInput.value) {
+  if (category.value && description.value && minuteInput.value && secondInput.value) {
     createNewActivity();
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
   }
+  dispalyTimer()
 }
+
+function dispalyTimer() {
+  timerPage.innerHTML = '';
+  timerPage.innerHTML += `
+  <p class="description-input" id="descriptionInput">${currentActivity.description}</p>
+  <p class="timer-countdown"id="timerCountdown">${currentActivity.minutes}: ${currentActivity.seconds}</p>
+  <button class="circle-timer" id="circleTimer" type="button">START</button>
+  `;
+
+
+
+
+}
+
+
 
 // function changeCountdownColor() {
 //   if (currentActivity.category === 'Study') {
