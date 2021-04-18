@@ -173,8 +173,23 @@ h1 {
   background: #46424D;
   border: 1px solid #B3FD78;
   padding: 9em;
+  margin: 3em;
 }
-
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.timer-countdown {
+  font-size: 60px;
+  font-weight: bold;
+  margin: 0;
+}
+.description-input {
+  font-size: 24px;
+  margin: 0;
+}
 .hidden {
   display: none;
 }

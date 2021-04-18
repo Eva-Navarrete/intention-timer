@@ -8,6 +8,7 @@ var errorText = document.querySelector('#errorText');
 var errorTextNums = document.querySelector('#errorTextNumbers');
 var errorTextNums2 = document.querySelector('#errorTextNumbers2');
 var errorTextCategory = document.querySelector('#errorTextCategory');
+var timerPage = document.querySelector('.timer');
 
 // Button Variables
 var startActivityButton = document.querySelector('#startActivityButton');
@@ -156,7 +157,7 @@ function createNewActivity() {
   savedActivities.push(currentActivity);
 }
 
-var timerPage = document.querySelector('.timer');
+
 
 function hideFormView() {
   if (category.value && description.value && minuteInput.value && secondInput.value) {
