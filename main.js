@@ -224,8 +224,7 @@ function completeTimer() {
     }
 }
 
-
-
-// add alert
-// change start to complete activity using innerText
-// change new activity to current activity using innerText
+// Add eventListener to logActivityBtn and link it to function of displayLoggedActivity
+// Within the function use innerHTML to insert currentActivity (interpolated) into <div id=listPastActivities
+// use the class to add styling to the logged activities.
+// Add hidden to the <p> tags in list Activities div. 
