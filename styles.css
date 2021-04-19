@@ -180,6 +180,11 @@ h1 {
   margin: 3em;
 }
 
+.complete-circle {
+  padding-right: 3em;
+  padding-left: 3em;
+}
+
 .timer,
 .display-timer {
   display: flex;
