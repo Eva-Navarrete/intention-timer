@@ -44,6 +44,7 @@ var currentActivity;
 wrapper.addEventListener('click', changeColor);
 startActivityButton.addEventListener('click', addErrorMessage);
 minuteInput.addEventListener('keydown', preventE);
+secondInput.addEventListener('keydown', preventE);
 circleTimerBtn.addEventListener('click', startTimer);
 
 
@@ -51,13 +52,13 @@ function changeColor() {
   event.preventDefault();
   if (event.target.id === 'studyWrapper') {
     changeStudyButton();
-    category.value = 'study';
+    category.value = 'Study';
   } else if (event.target.id === 'meditateWrapper') {
     changeMeditateButton();
-    category.value = 'meditate';
+    category.value = 'Meditate';
   } else if (event.target.id === 'exerciseWrapper') {
     changeExerciseButton();
-    category.value = 'exercise';
+    category.value = 'Exercise';
   }
 }
 
@@ -166,11 +167,11 @@ function hideFormView() {
 }
 
 function changeCountdownColor() {
-  if (currentActivity.category === 'study') {
+  if (currentActivity.category === 'Study') {
     circleTimerBtn.style.borderColor = '#B3FD78';
-  } else if (currentActivity.category === 'meditate') {
+  } else if (currentActivity.category === 'Meditate') {
     circleTimerBtn.style.borderColor = '#C278FD';
-  } else if (currentActivity.category === 'exercise') {
+  } else if (currentActivity.category === 'Exercise') {
     circleTimerBtn.style.borderColor = '#FD8078';
   }
 }
@@ -220,11 +221,36 @@ function completeTimer() {
     circleTimerBtn.innerText = 'COMPLETE!';
     circleTimerBtn.classList.add('complete-circle')
     logActivityBtn.classList.remove('hidden');
-    alert('Your time is up!  The activity has been completed.');
+
     }
 }
 
+var logPastActivities = document.querySelector('#listPastActivities')
+var activityCard = document.querySelector('#activityCard');
+logActivityBtn.addEventListener('click', displayLoggedActivity)
+
+
+
+function displayLoggedActivity() {
+// logPastActivities.innerHTML = '';
+logPastActivities.classList.add('hidden');
+activityCard.classList.remove('hidden');
+//   for (var i = 0; i < currentActivity.length; i++) {
+//
+//
+// }
+activityCard.innerHTML = `
+    <p class="acivity-card-category" id="activityCardCategory"> ${currentActivity.category}</p>
+    <p class="activity-card-time" id="activityCardTime">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
+    <p class="activity-card-description" id="activityCardDescription">${currentActivity.description}</p>
+`;
+}
+
 // Add eventListener to logActivityBtn and link it to function of displayLoggedActivity
+//Target #listPastActivities
 // Within the function use innerHTML to insert currentActivity (interpolated) into <div id=listPastActivities
 // use the class to add styling to the logged activities.
-// Add hidden to the <p> tags in list Activities div. 
+// Add hidden to the <p> tags in list Activities div.
+
+
+//Do we have to add currentActivity to saved activities array in order to show multiple?

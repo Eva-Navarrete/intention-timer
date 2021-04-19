@@ -25,7 +25,8 @@ header {
   align-items: center;
   background: #46424D;
   color: #FFF;
-  height: 50px;
+  height: 65px;
+  font-size: 26px;
 }
 main {
   color: #CBC9CF;
