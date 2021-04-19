@@ -12,6 +12,7 @@ var timerPage = document.querySelector('.timer');
 var displayTimer = document.querySelector('#displayTimer');
 var descriptionInput = document.querySelector('#descriptionInput');
 var timerCountdown = document.querySelector('#timerCountdown');
+var activityTitle = document.querySelector('h1');
 
 // Button Variables
 var startActivityButton = document.querySelector('#startActivityButton');
@@ -23,6 +24,7 @@ var meditateClickedBtn = document.querySelector('.meditate-wrapper');
 var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
 var category = document.querySelector('.category-button');
 var circleTimerBtn = document.querySelector('#circleTimer');
+var logActivityBtn = document.querySelector('#logActivity')
 
 // Image Variables
 var studyImg = document.querySelector('#studyLogo');
@@ -157,6 +159,7 @@ function hideFormView() {
     createNewActivity();
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
+    activityTitle.innerText = 'Current Activity';
     showTimer();
   }
   changeCountdownColor();
@@ -207,6 +210,22 @@ function startTimer() {
     if (time === -1) {
         clearInterval(timer);
         timerCountdown.innerHTML = "00:00";
+        completeTimer()
          }
     }, 1000);
 }
+
+function completeTimer() {
+  if (timerCountdown.innerHTML === "00:00") {
+    circleTimerBtn.innerText = 'COMPLETE!';
+    circleTimerBtn.classList.add('complete-circle')
+    logActivityBtn.classList.remove('hidden');
+    alert('Your time is up!  The activity has been completed.');
+    }
+}
+
+
+
+// add alert
+// change start to complete activity using innerText
+// change new activity to current activity using innerText
