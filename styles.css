@@ -71,6 +71,26 @@ h1 {
   font-size: 13px;
   margin: 2em 3em 2em 6em;
 }
+.activity-card {
+  display: flex;
+  flex-direction: column;
+  background: #46424D;
+  border-radius: 3px;
+  padding: 1em;
+  margin: 0;
+  margin-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.identifier-line {
+  flex-direction: column;
+  border: 1px solid;
+  height: 25px;
+  width: 2px;
+  color: red;
+  background: red;
+  border-radius: 2px;
+}
 
 .wrapper {
   display: flex;
@@ -157,6 +177,14 @@ h1 {
   background-color: #FFF;
   padding: .5em 2em .5em 2em;
   margin-left: 32em;
+}
+
+.log-activity-button {
+  background-color: #FFF;
+  padding: .5em 3em .5em 3em;
+  margin: 0;
+  border-radius: .25em;
+  outline: none;
 }
 
 .error-text-styling {
