@@ -76,7 +76,7 @@ h1 {
   flex-direction: column;
   background: #46424D;
   width: 20em;
-  height: 9em;
+  height: 11em;
   border-radius: 3px;
   padding: 1em;
   margin: 0;
@@ -90,16 +90,28 @@ h1 {
   border: 1px solid;
   height: 25px;
   width: 2px;
-  color: red;
-  background: red;
   border-radius: 2px;
+}
+
+.Study {
+  border-color: #B3FD78;
+  background: #B3FD78;
+}
+
+.Meditate {
+  border-color: #C278FD;
+  background: #C278FD;
+}
+
+.Exercise {
+  border-color: #FD8078;
+  background: #FD8078;
 }
 
 .wrapper {
   display: flex;
   justify-content: space-around;
 }
-
 
 .study-wrapper,
 .meditate-wrapper,
@@ -174,8 +186,6 @@ h1 {
   width: 20em;
 }
 
-
-
 .start-activity-button {
   background-color: #FFF;
   padding: .5em 2em .5em 2em;
@@ -236,6 +246,8 @@ h1 {
   margin: 0;
   margin-top: 1.5em;
 }
+
+
 
 .hidden {
   display: none;

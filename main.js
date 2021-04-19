@@ -240,7 +240,7 @@ activityCard.classList.remove('hidden');
 //
 // }
 activityCard.innerHTML = `
-    <div class="identifier-line"></div>
+    <div class="identifier-line ${currentActivity.category}"></div>
     <p class="acivity-card-category" id="activityCardCategory"> ${currentActivity.category}</p>
     <p class="activity-card-time" id="activityCardTime">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
     <p class="activity-card-description" id="activityCardDescription">${currentActivity.description}</p>
