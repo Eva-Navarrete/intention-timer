@@ -96,6 +96,7 @@ function addErrorMessage(event) {
   minutesError();
   secondsError();
   hideFormView();
+  showTimer();
 }
 
 function categoryError() {
@@ -161,7 +162,7 @@ function hideFormView() {
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
     activityTitle.innerText = 'Current Activity';
-    showTimer();
+    // showTimer();
   }
   changeCountdownColor();
 }
@@ -178,6 +179,8 @@ function changeCountdownColor() {
 
 function showTimer() {
   descriptionInput.innerText = currentActivity.description;
+  circleTimer.innerText = 'START';
+  logActivityBtn.classList.add('hidden');
   clockFormat();
 }
 
@@ -228,17 +231,15 @@ function completeTimer() {
 var logPastActivities = document.querySelector('#listPastActivities')
 var activitySection = document.querySelector('#activitySection');
 logActivityBtn.addEventListener('click', displayLoggedActivity)
-var createNewActivityBtn = document.querySelector('#createNewActivity')
+var createNewActivityBtn = document.querySelector('#createNewActivityButton')
 var buttonForm = document.querySelector('#buttonForm');
 
-function displayLoggedActivity() {
-// logPastActivities.innerHTML = '';
-logPastActivities.classList.add('hidden');
-activitySection.classList.remove('hidden');
-timerPage.classList.add('hidden');
-activityTitle.innerText = 'Completed Activity';
-buttonForm.classList.remove('hidden');
+createNewActivityBtn.addEventListener('click', returnCreateActivityView);
 
+
+function displayLoggedActivity() {
+activitySection.innerHTML = '';
+showCompletedActivityView ();
 
   for (var i = 0; i < savedActivities.length; i++) {
     activitySection.innerHTML += `
@@ -251,4 +252,18 @@ buttonForm.classList.remove('hidden');
       `;
   }
 
+}
+
+function showCompletedActivityView () {
+  logPastActivities.classList.add('hidden');
+  activitySection.classList.remove('hidden');
+  timerPage.classList.add('hidden');
+  activityTitle.innerText = 'Completed Activity';
+  buttonForm.classList.remove('hidden');
+}
+
+function returnCreateActivityView() {
+  buttonForm.classList.add('hidden');
+  selectCategoryContainer.classList.remove('hidden');
+  activityTitle.innerText = 'New Activity';
 }
