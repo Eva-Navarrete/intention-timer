@@ -145,19 +145,19 @@ function preventE(e) {
   }
 }
 
-function createNewActivity() {
+function createActivityInstance() {
   currentActivity = new Activity(category.value, description.value, Number.parseInt(minuteInput.value), Number.parseInt(secondInput.value));
   // category = category.value;
   // description = description.value;
   // minutes = Number.parseInt(minutes.value);
   // seconds = Number.parseInt(seconds.value);
   //  completed.value = null;
-  savedActivities.push(currentActivity);
+  savedActivities.unshift(currentActivity);
 }
 
 function hideFormView() {
   if (category.value && description.value && minuteInput.value && secondInput.value) {
-    createNewActivity();
+    createActivityInstance();
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
     activityTitle.innerText = 'Current Activity';
@@ -228,13 +228,17 @@ function completeTimer() {
 var logPastActivities = document.querySelector('#listPastActivities')
 var activitySection = document.querySelector('#activitySection');
 logActivityBtn.addEventListener('click', displayLoggedActivity)
-
-
+var createNewActivityBtn = document.querySelector('#createNewActivity')
+var buttonForm = document.querySelector('#buttonForm');
 
 function displayLoggedActivity() {
 // logPastActivities.innerHTML = '';
 logPastActivities.classList.add('hidden');
 activitySection.classList.remove('hidden');
+timerPage.classList.add('hidden');
+activityTitle.innerText = 'Completed Activity';
+buttonForm.classList.remove('hidden');
+
 
   for (var i = 0; i < savedActivities.length; i++) {
     activitySection.innerHTML += `
@@ -246,4 +250,5 @@ activitySection.classList.remove('hidden');
       </div>
       `;
   }
+
 }
