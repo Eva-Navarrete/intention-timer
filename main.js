@@ -96,6 +96,7 @@ function addErrorMessage(event) {
   minutesError();
   secondsError();
   hideFormView();
+  showTimer();
 }
 
 function categoryError() {
@@ -145,23 +146,23 @@ function preventE(e) {
   }
 }
 
-function createNewActivity() {
+function createActivityInstance() {
   currentActivity = new Activity(category.value, description.value, Number.parseInt(minuteInput.value), Number.parseInt(secondInput.value));
   // category = category.value;
   // description = description.value;
   // minutes = Number.parseInt(minutes.value);
   // seconds = Number.parseInt(seconds.value);
   //  completed.value = null;
-  savedActivities.push(currentActivity);
+  savedActivities.unshift(currentActivity);
 }
 
 function hideFormView() {
   if (category.value && description.value && minuteInput.value && secondInput.value) {
-    createNewActivity();
+    createActivityInstance();
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
     activityTitle.innerText = 'Current Activity';
-    showTimer();
+    // showTimer();
   }
   changeCountdownColor();
 }
@@ -178,6 +179,8 @@ function changeCountdownColor() {
 
 function showTimer() {
   descriptionInput.innerText = currentActivity.description;
+  circleTimer.innerText = 'START';
+  logActivityBtn.classList.add('hidden');
   clockFormat();
 }
 
@@ -217,6 +220,7 @@ function startTimer() {
 }
 
 function completeTimer() {
+  currentActivity.markComplete();
   if (timerCountdown.innerHTML === "00:00") {
     circleTimerBtn.innerText = 'COMPLETE!';
     circleTimerBtn.classList.add('complete-circle')
@@ -226,32 +230,54 @@ function completeTimer() {
 }
 
 var logPastActivities = document.querySelector('#listPastActivities')
-var activityCard = document.querySelector('#activityCard');
+var activitySection = document.querySelector('#activitySection');
 logActivityBtn.addEventListener('click', displayLoggedActivity)
+var createNewActivityBtn = document.querySelector('#createNewActivityButton')
+var buttonForm = document.querySelector('#buttonForm');
 
+createNewActivityBtn.addEventListener('click', returnCreateActivityView);
 
 
 function displayLoggedActivity() {
-// logPastActivities.innerHTML = '';
-logPastActivities.classList.add('hidden');
-activityCard.classList.remove('hidden');
-//   for (var i = 0; i < currentActivity.length; i++) {
-//
-//
-// }
-activityCard.innerHTML = `
-    <div class="identifier-line ${currentActivity.category}"></div>
-    <p class="acivity-card-category" id="activityCardCategory"> ${currentActivity.category}</p>
-    <p class="activity-card-time" id="activityCardTime">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
-    <p class="activity-card-description" id="activityCardDescription">${currentActivity.description}</p>
-`;
+activitySection.innerHTML = '';
+showCompletedActivityView ();
+
+retrieveStored();
+
+  for (var i = 0; i < savedActivities.length; i++) {
+    activitySection.innerHTML += `
+      <div class="activity-card" id="activityCard">
+        <div class="identifier-line ${savedActivities[i].category}"></div>
+        <p class="acivity-card-category" id="activityCardCategory"> ${savedActivities[i].category}</p>
+        <p class="activity-card-time" id="activityCardTime">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+        <p class="activity-card-description" id="activityCardDescription">${savedActivities[i].description}</p>
+      </div>
+      `;
+  }
+
 }
 
-// Add eventListener to logActivityBtn and link it to function of displayLoggedActivity
-//Target #listPastActivities
-// Within the function use innerHTML to insert currentActivity (interpolated) into <div id=listPastActivities
-// use the class to add styling to the logged activities.
-// Add hidden to the <p> tags in list Activities div.
 
+function showCompletedActivityView () {
 
-//Do we have to add currentActivity to saved activities array in order to show multiple?
+  logPastActivities.classList.add('hidden');
+  activitySection.classList.remove('hidden');
+  timerPage.classList.add('hidden');
+  activityTitle.innerText = 'Completed Activity';
+  buttonForm.classList.remove('hidden');
+}
+
+function returnCreateActivityView() {
+  buttonForm.classList.add('hidden');
+  selectCategoryContainer.classList.remove('hidden');
+  activityTitle.innerText = 'New Activity';
+  minuteInput.value = ''
+  secondInput.value = ''
+  description.value = ''
+}
+
+function retrieveStored() {
+  currentActivity.saveToStorage();
+  var storedActivities = JSON.parse(localStorage.getItem('currentActivity'))
+
+}
