@@ -19,12 +19,15 @@ To solidify and demonstrate the understanding of:
 4. implementation of client-side data persistence by utilizing JSON and localStorage
 
 ## Features
-
+* A website that allows users to set a timer for one of three selected activities. User can input the description of their activity and select a time of duration that they would like to take part in.
+* User can log that activity and add as many activities as they would like.
 
 **[Back to top](#table-of-contents)**
 
 ## How does this work?
-
+![](https://media.giphy.com/media/aE6dS8OlcsJiMfkS3P/giphy.gif)
+![](https://media.giphy.com/media/LfvB6kvEvjl1uezXft/giphy.gif)
+![](https://media.giphy.com/media/zHed9YRlHKHE47LnzB/giphy.gif)
 
 **[Back to top](#table-of-contents)**
 
@@ -47,16 +50,24 @@ To solidify and demonstrate the understanding of:
 ## Project Reflection
 
 ##### Wins
-wins in this project for us.
+* We got to iteration 5 and were able to experiment with local storage.
+* Our CSS styling improved.
+* Better understanding of Data Model and the DOM and manipulating HTML elements.
 
 ##### Challenges
-what we struggled with
+* The timer was the most challenging, and learning to implement users input to the timer accordingly.  
+* Retrieving local storage and displaying on DOM.
 
 ##### Overall Impressions
-What we learned
+* We are ROCKSTARS!!!
+* We learned how to work collaboratively
+* Learned that time escape us, and it gets hard to stick to a timeline.
 
 #### Future Features
-What we want to implement in future
+* Display Local storage so user has the ability to come back to their logged activities.
+* Add a user login functionality
+* Animate the Timer animate the border around the timer in a way that communicates how much time is left.
+* Pausing the Timer after the timer begins, a user should be able to pause the timer and resume an activity when they wish
 
 ## Credits
 #### Authors
@@ -87,5 +98,5 @@ width="150" height="auto" /></td>
 
 **************************************************************************
 ###### This project was created for [Turing School of Software and Design](https://turing.io/)
-###### 2021/03/09
+###### 2021/04/20
 **[Back to top](#table-of-contents)**
