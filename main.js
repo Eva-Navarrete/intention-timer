@@ -13,6 +13,9 @@ var displayTimer = document.querySelector('#displayTimer');
 var descriptionInput = document.querySelector('#descriptionInput');
 var timerCountdown = document.querySelector('#timerCountdown');
 var activityTitle = document.querySelector('h1');
+var buttonForm = document.querySelector('#buttonForm');
+var listPastActivities = document.querySelector('#listPastActivities');
+var activitySection = document.querySelector('#activitySection');
 
 // Button Variables
 var startActivityButton = document.querySelector('#startActivityButton');
@@ -24,7 +27,8 @@ var meditateClickedBtn = document.querySelector('.meditate-wrapper');
 var exerciseClickedBtn = document.querySelector('.exercise-wrapper');
 var category = document.querySelector('.category-button');
 var circleTimerBtn = document.querySelector('#circleTimer');
-var logActivityBtn = document.querySelector('#logActivity')
+var logActivityBtn = document.querySelector('#logActivity');
+var createNewActivityBtn = document.querySelector('#createNewActivityButton');
 
 // Image Variables
 var studyImg = document.querySelector('#studyLogo');
@@ -34,7 +38,6 @@ var errorImg = document.querySelector('#errorImage');
 var errorImg2 = document.querySelector('#errorImage2');
 var errorImg3 = document.querySelector('#errorImage3');
 var errorImg4 = document.querySelector('#errorImageCategory');
-
 
 // Global Variable
 var savedActivities = [];
@@ -46,6 +49,17 @@ startActivityButton.addEventListener('click', addErrorMessage);
 minuteInput.addEventListener('keydown', preventE);
 secondInput.addEventListener('keydown', preventE);
 circleTimerBtn.addEventListener('click', startTimer);
+logActivityBtn.addEventListener('click', displayLoggedActivity);
+createNewActivityBtn.addEventListener('click', returnCreateActivityView);
+
+
+function show(element) {
+  element.classList.remove('hidden');
+};
+
+function hide(element) {
+  element.classList.add('hidden');
+}
 
 
 function changeColor() {
@@ -63,17 +77,17 @@ function changeColor() {
 }
 
 function changeStudyButton() {
+  studyClickedBtn.classList.add('study-clicked');
   exerciseClickedBtn.classList.remove('exercise-clicked');
   meditateClickedBtn.classList.remove('meditate-clicked');
-  studyClickedBtn.classList.add('study-clicked');
   studyImg.src = `assets/study-active.svg`;
   meditateImg.src = `assets/meditate.svg`;
   exerciseImg.src = `assets/exercise.svg`;
 }
 
 function changeMeditateButton() {
-  exerciseClickedBtn.classList.remove('exercise-clicked');
   meditateClickedBtn.classList.add('meditate-clicked');
+  exerciseClickedBtn.classList.remove('exercise-clicked');
   studyClickedBtn.classList.remove('study-clicked');
   meditateImg.src = `assets/meditate-active.svg`;
   studyImg.src = `assets/study.svg`;
@@ -101,41 +115,41 @@ function addErrorMessage(event) {
 
 function categoryError() {
   if (!category.value) {
-    errorTextCategory.classList.remove('hidden');
-    errorImg4.classList.remove('hidden');
+    show(errorTextCategory);
+    show(errorImg4);
   } else if (category.value) {
-    errorTextCategory.classList.add('hidden');
-    errorImg4.classList.add('hidden');
+    hide(errorTextCategory);
+    hide(errorImg4);
   }
 }
 
 function descriptionError() {
   if (!description.value) {
-    errorText.classList.remove('hidden');
-    errorImg.classList.remove('hidden');
+    show(errorText);
+    show(errorImg);
   } else if (description.value) {
-    errorText.classList.add('hidden');
-    errorImg.classList.add('hidden');
+    hide(errorText);
+    hide(errorImg);
   }
 }
 
 function minutesError() {
   if (!minuteInput.value) {
-    errorTextNums.classList.remove('hidden');
-    errorImg2.classList.remove('hidden');
+    show(errorTextNums);
+    show(errorImg2);
   } else if (minuteInput.value) {
-    errorTextNums.classList.add('hidden');
-    errorImg2.classList.add('hidden');
+    hide(errorTextNums);
+    hide(errorImg2);
   }
 }
 
 function secondsError() {
   if (!secondInput.value) {
-    errorTextNums2.classList.remove('hidden');
-    errorImg3.classList.remove('hidden');
+    show(errorTextNums2);
+    show(errorImg3);
   } else if (secondInput.value) {
-    errorTextNums2.classList.add('hidden');
-    errorImg3.classList.add('hidden');
+    hide(errorTextNums2);
+    hide(errorImg3);
   }
 }
 
@@ -148,14 +162,13 @@ function preventE(e) {
 
 function createActivityInstance() {
   currentActivity = new Activity(category.value, description.value, Number.parseInt(minuteInput.value), Number.parseInt(secondInput.value));
-  savedActivities.unshift(currentActivity);
 }
 
 function hideFormView() {
   if (category.value && description.value && minuteInput.value && secondInput.value) {
     createActivityInstance();
-    selectCategoryContainer.classList.add('hidden');
-    timerPage.classList.remove('hidden');
+    hide(selectCategoryContainer);
+    show(timerPage);
     activityTitle.innerText = 'Current Activity';
   }
   changeCountdownColor();
@@ -174,7 +187,7 @@ function changeCountdownColor() {
 function showTimer() {
   descriptionInput.innerText = currentActivity.description;
   circleTimer.innerText = 'START';
-  logActivityBtn.classList.add('hidden');
+  hide(logActivityBtn);
   clockFormat();
 }
 
@@ -191,24 +204,7 @@ function clockFormat() {
 }
 
 function startTimer() {
-  var totalSec = parseInt(currentActivity.seconds);
-  var totalMin = parseInt(currentActivity.minutes * 60);
-  var time = totalSec + totalMin;
-
-  var timer = setInterval(function() {
-    var minutes =  Math.floor(time/60);
-    var seconds = time % 60;
-
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    timerCountdown.innerText = `${minutes}:${seconds}`;
-    time--;
-    if (time === -1) {
-      clearInterval(timer);
-      timerCountdown.innerHTML = "00:00";
-      completeTimer();
-    }
-  }, 1000);
+  currentActivity.beginTimer();
 }
 
 function completeTimer() {
@@ -216,19 +212,12 @@ function completeTimer() {
   if (timerCountdown.innerHTML === "00:00") {
     circleTimerBtn.innerText = 'COMPLETE!';
     circleTimerBtn.classList.add('complete-circle');
-    logActivityBtn.classList.remove('hidden');
+    show(logActivityBtn);
     }
 }
 
-var logPastActivities = document.querySelector('#listPastActivities');
-var activitySection = document.querySelector('#activitySection');
-var createNewActivityBtn = document.querySelector('#createNewActivityButton');
-var buttonForm = document.querySelector('#buttonForm');
-logActivityBtn.addEventListener('click', displayLoggedActivity);
-createNewActivityBtn.addEventListener('click', returnCreateActivityView);
-
-
 function displayLoggedActivity() {
+  savedActivities.unshift(currentActivity);
   activitySection.innerHTML = '';
   showCompletedActivityView ();
   retrieveStored();
@@ -247,16 +236,16 @@ function displayLoggedActivity() {
 }
 
 function showCompletedActivityView () {
-  logPastActivities.classList.add('hidden');
-  activitySection.classList.remove('hidden');
-  timerPage.classList.add('hidden');
+  hide(listPastActivities);
+  show(activitySection);
+  hide(timerPage);
+  show(buttonForm);
   activityTitle.innerText = 'Completed Activity';
-  buttonForm.classList.remove('hidden');
 }
 
 function returnCreateActivityView() {
-  buttonForm.classList.add('hidden');
-  selectCategoryContainer.classList.remove('hidden');
+  hide(buttonForm);
+  show(selectCategoryContainer);
   activityTitle.innerText = 'New Activity';
   minuteInput.value = '';
   secondInput.value = '';
