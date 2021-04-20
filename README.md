@@ -27,8 +27,10 @@ To solidify and demonstrate the understanding of:
 ## How does this work?
 ![](https://media.giphy.com/media/aE6dS8OlcsJiMfkS3P/giphy.gif)
 ![](https://media.giphy.com/media/LfvB6kvEvjl1uezXft/giphy.gif)
-![](https://media.giphy.com/media/zHed9YRlHKHE47LnzB/giphy.gif)
-![Live Page](https://mendozalourdes.github.io/intention-timer/)
+![](https://media.giphy.com/media/zHed9YRlHKHE47LnzB/giphy.gif)  
+
+GitHub Page Link: https://mendozalourdes.github.io/intention-timer/ 
+
 **[Back to top](#table-of-contents)**
 
 ## Want to contribute?
