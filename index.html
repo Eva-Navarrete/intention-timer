@@ -17,42 +17,31 @@
             <button class="meditate-wrapper category-button" id="meditateWrapper" type="submit">  <img class="logo" id="meditateLogo" src="assets/meditate.svg" alt="meditate-logo">Meditate</button>
             <button class="exercise-wrapper category-button" id="exerciseWrapper" type="submit"><img class="logo" id="exerciseLogo" src="assets/exercise.svg" alt="exercise-logo">Exercise</button><br><br>
           </div>
-
-            <p class="error-text-category error-text-styling hidden" id="errorTextCategory"><img class="error-image hidden" id="errorImageCategory" src="assets/warning.svg">  A category is required</p>
-
+            <p class="error-text-category error-text-styling hidden" id="errorTextCategory"><img class="error-image hidden" id="errorImageCategory" src="assets/warning.svg" alt="error-triangle">  A category is required</p>
           <div class="input-one" id="inputOne">
             <label for="inputOne">What would you like to accomplish during this time?</label><br><br>
             <input class="user-input-one" id="userInputOne" type="text"/><br><br>
-
-            <p class="error-text error-text-styling hidden" id="errorText"><img class="error-image hidden" id="errorImage" src="assets/warning.svg">  A description is required</p>
-
-
+            <p class="error-text error-text-styling hidden" id="errorText"><img class="error-image hidden" id="errorImage" src="assets/warning.svg" alt="error-triangle">  A description is required</p>
           </div>
-
           <div class="input-two" id="inputTwo">
             <div class="expect-time">
               <label for="minutesInput">Minutes</label>
               <input class="time-input" id="minutesInput" type="number" min="1" max="600">
-
-            <p class="error-text-numbers error-text-styling hidden" id="errorTextNumbers"><img class="error-image hidden" id="errorImage2" src="assets/warning.svg">  A number is required</p><br>
+            <p class="error-text-numbers error-text-styling hidden" id="errorTextNumbers"><img class="error-image hidden" id="errorImage2" src="assets/warning.svg" alt="error-triangle">  A number is required</p><br>
             </div>
             <div class="expect-time">
               <label for="secondsInput">Seconds</label>
               <input class="time-input" id="secondsInput" type="number" min="1" max="59">
-
-            <p class="error-text-numbers2 error-text-styling hidden" id="errorTextNumbers2"><img class="error-image hidden" id="errorImage3" src="assets/warning.svg">  A number is required</p><br>
+            <p class="error-text-numbers2 error-text-styling hidden" id="errorTextNumbers2"><img class="error-image hidden" id="errorImage3" src="assets/warning.svg" alt="error-triangle">  A number is required</p><br>
             </div>
           </div>
-
           <button class="start-activity-button" id="startActivityButton" type="button">START ACTIVITY</button>
         </form>
-
         <form class="timer container hidden" id="timer">
           <p class="description-input" id="descriptionInput">Chill Time</p>
           <p class="timer-countdown"id="timerCountdown">5:00</p>
           <button class="circle-timer" id="circleTimer" type="button">START</button>
           <button class="log-activity-button hidden" id="logActivity" type="button">LOG ACTIVITY</button>
-
         </form>
         <div class="button-form container hidden" id="buttonForm">
           <button class="create-new-activity-button" id="createNewActivityButton" type="button">CREATE A NEW ACTIVITY</button>
