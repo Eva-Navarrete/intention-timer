@@ -148,11 +148,6 @@ function preventE(e) {
 
 function createActivityInstance() {
   currentActivity = new Activity(category.value, description.value, Number.parseInt(minuteInput.value), Number.parseInt(secondInput.value));
-  // category = category.value;
-  // description = description.value;
-  // minutes = Number.parseInt(minutes.value);
-  // seconds = Number.parseInt(seconds.value);
-  //  completed.value = null;
   savedActivities.unshift(currentActivity);
 }
 
@@ -162,7 +157,6 @@ function hideFormView() {
     selectCategoryContainer.classList.add('hidden');
     timerPage.classList.remove('hidden');
     activityTitle.innerText = 'Current Activity';
-    // showTimer();
   }
   changeCountdownColor();
 }
@@ -187,20 +181,19 @@ function showTimer() {
 function clockFormat() {
   var totalSec = parseInt(currentActivity.seconds);
   var totalMin = parseInt(currentActivity.minutes * 60);
-  var time = totalSec + totalMin
-
+  var time = totalSec + totalMin;
   var minutes =  Math.floor(time/60);
   var seconds = time % 60;
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    timerCountdown.innerText = `${minutes}:${seconds}`
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  timerCountdown.innerText = `${minutes}:${seconds}`;
 }
 
 function startTimer() {
   var totalSec = parseInt(currentActivity.seconds);
   var totalMin = parseInt(currentActivity.minutes * 60);
-  var time = totalSec + totalMin
+  var time = totalSec + totalMin;
 
   var timer = setInterval(function() {
     var minutes =  Math.floor(time/60);
@@ -208,58 +201,52 @@ function startTimer() {
 
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
-    timerCountdown.innerText = `${minutes}:${seconds}`
+    timerCountdown.innerText = `${minutes}:${seconds}`;
     time--;
-
     if (time === -1) {
-        clearInterval(timer);
-        timerCountdown.innerHTML = "00:00";
-        completeTimer()
-         }
-    }, 1000);
+      clearInterval(timer);
+      timerCountdown.innerHTML = "00:00";
+      completeTimer();
+    }
+  }, 1000);
 }
 
 function completeTimer() {
   currentActivity.markComplete();
   if (timerCountdown.innerHTML === "00:00") {
     circleTimerBtn.innerText = 'COMPLETE!';
-    circleTimerBtn.classList.add('complete-circle')
+    circleTimerBtn.classList.add('complete-circle');
     logActivityBtn.classList.remove('hidden');
-
     }
 }
 
-var logPastActivities = document.querySelector('#listPastActivities')
+var logPastActivities = document.querySelector('#listPastActivities');
 var activitySection = document.querySelector('#activitySection');
-logActivityBtn.addEventListener('click', displayLoggedActivity)
-var createNewActivityBtn = document.querySelector('#createNewActivityButton')
+var createNewActivityBtn = document.querySelector('#createNewActivityButton');
 var buttonForm = document.querySelector('#buttonForm');
-
+logActivityBtn.addEventListener('click', displayLoggedActivity);
 createNewActivityBtn.addEventListener('click', returnCreateActivityView);
 
 
 function displayLoggedActivity() {
-activitySection.innerHTML = '';
-showCompletedActivityView ();
-
-retrieveStored();
-
+  activitySection.innerHTML = '';
+  showCompletedActivityView ();
+  retrieveStored();
   for (var i = 0; i < savedActivities.length; i++) {
     activitySection.innerHTML += `
       <div class="activity-card" id="activityCard">
         <div class="identifier-line ${savedActivities[i].category}"></div>
-        <p class="acivity-card-category" id="activityCardCategory"> ${savedActivities[i].category}</p>
-        <p class="activity-card-time" id="activityCardTime">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
-        <p class="activity-card-description" id="activityCardDescription">${savedActivities[i].description}</p>
+        <div class="user-activity-input">
+          <p class="activity-card-category">${savedActivities[i].category}</p>
+          <p class="activity-card-time">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+          <p class="activity-card-description">${savedActivities[i].description}</p>
+        </div>
       </div>
       `;
   }
-
 }
 
-
 function showCompletedActivityView () {
-
   logPastActivities.classList.add('hidden');
   activitySection.classList.remove('hidden');
   timerPage.classList.add('hidden');
@@ -271,13 +258,12 @@ function returnCreateActivityView() {
   buttonForm.classList.add('hidden');
   selectCategoryContainer.classList.remove('hidden');
   activityTitle.innerText = 'New Activity';
-  minuteInput.value = ''
-  secondInput.value = ''
-  description.value = ''
+  minuteInput.value = '';
+  secondInput.value = '';
+  description.value = '';
 }
 
 function retrieveStored() {
   currentActivity.saveToStorage();
   var storedActivities = JSON.parse(localStorage.getItem('currentActivity'))
-
 }

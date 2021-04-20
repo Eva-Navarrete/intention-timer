@@ -11,14 +11,18 @@
 
 /* border-bottom: 1px solid;
 border-color:#EFB7EC; will need to add this to the sections to add white split line.  */
+
+
 * {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
 }
+
 body {
   background: #2B2733;
   margin: 0;
 }
+
 header {
   display: flex;
   justify-content: center;
@@ -28,6 +32,7 @@ header {
   height: 65px;
   font-size: 26px;
 }
+
 main {
   color: #CBC9CF;
   display:flex;
@@ -53,11 +58,32 @@ h1 {
   padding-bottom: 18em;
 }
 
+
+
+/* there are 2 of these! */
 .start-activity-button {
   border-radius: 4.5px;
   border: transparent;
   background-color: #FFF;
+}
+.start-activity-button {
+  background-color: #FFF;
+  padding: .5em 2em .5em 2em;
+  margin-left: 32em;
+}
 
+.button-form {
+  display: flex;
+  justify-content: center;
+}
+
+.create-new-activity-button {
+  background-color: #FFF;
+  padding: .5em 3.5em .5em 3.5em;
+  border-radius: 4px;
+  border: transparent;
+  outline: none;
+  margin: 2.5em;
 }
 
 .past-activities {
@@ -71,31 +97,43 @@ h1 {
   font-size: 13px;
   margin: 2em 3em 2em 6em;
 }
+
+
+/* ACTIVITY CARDS ON RIGHT */
 .activity-card {
   display: flex;
   flex-direction: column;
   background: #46424D;
   width: 20em;
-  height: 11em;
+  height: 4.2em;
   border-radius: 3px;
   padding: 1em;
-  margin: 0;
-  margin-left: 1.5em;
-  margin-bottom: 1.5em;
+  margin: 0em 1.5em 1.5em 1.5em;
 }
 
 .identifier-line {
-  display: flex;
+  justify-content: flex-end;
   align-self: flex-end;
   border: 1px solid;
-  height: 25px;
+  height: 30px;
   width: 2px;
   border-radius: 2px;
 }
 
-/* .activityCardTime {
-  font-family: Montserrat sans-serif;
-} */
+.user-activity-input {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.activity-card-category {
+  margin: 0;
+  font-weight: 700;
+}
+
+.activity-card-time {
+  margin: 0em .5em 0em 0em
+}
 
 .Study {
   border-color: #B3FD78;
@@ -111,6 +149,9 @@ h1 {
   border-color: #FD8078;
   background: #FD8078;
 }
+
+
+
 
 .wrapper {
   display: flex;
@@ -190,17 +231,12 @@ h1 {
   width: 20em;
 }
 
-.start-activity-button {
-  background-color: #FFF;
-  padding: .5em 2em .5em 2em;
-  margin-left: 32em;
-}
-
 .log-activity-button {
   background-color: #FFF;
   padding: .5em 3em .5em 3em;
   margin: 0;
-  border-radius: .25em;
+  border-radius: 4px;
+  border: transparent;
   outline: none;
 }
 
@@ -213,6 +249,8 @@ h1 {
   height: 2vh;
 }
 
+
+/* TIMER START BUTTON */
 .circle-timer {
   color: #CBC9CF;
   font-size: 22px;
@@ -227,8 +265,8 @@ h1 {
 }
 
 .complete-circle {
-  padding-right: 3em;
-  padding-left: 3em;
+  padding-right: 3.25em;
+  padding-left: 3.25em;
 }
 
 .timer,
@@ -250,8 +288,6 @@ h1 {
   margin: 0;
   margin-top: 1.5em;
 }
-
-
 
 .hidden {
   display: none;
