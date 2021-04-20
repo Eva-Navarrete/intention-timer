@@ -23,25 +23,21 @@ class Activity {
       time--;
 
       if (time === -1) {
-          clearInterval(timer);
-          timerCountdown.innerHTML = "00:00";
-          completeTimer()
-           }
+        clearInterval(timer);
+        timerCountdown.innerHTML = "00:00";
+        completeTimer()
+        }
       }, 1000);
-
   }
 
   markComplete() {
-    this.completed = true
+    this.completed = true;
   }
 
   saveToStorage() {
     var storedActivity = JSON.stringify(savedActivities);
+    localStorage.setItem('currentActivity', storedActivity);
 
-    localStorage.setItem('currentActivity', storedActivity)
-
-    var parsedActivities = JSON.parse(localStorage.getItem('currentActivity'))
-
+    var parsedActivities = JSON.parse(localStorage.getItem('currentActivity'));
   }
-
 }

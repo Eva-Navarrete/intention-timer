@@ -1,4 +1,3 @@
-
 * {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
@@ -78,8 +77,6 @@ h1 {
   margin: 2em 3em 2em 6em;
 }
 
-
-/* ACTIVITY CARDS ON RIGHT */
 .activity-card {
   display: flex;
   flex-direction: column;
@@ -228,8 +225,6 @@ h1 {
   height: 2vh;
 }
 
-
-/* TIMER START BUTTON */
 .circle-timer {
   color: #CBC9CF;
   font-size: 22px;
