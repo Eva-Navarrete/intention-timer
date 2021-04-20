@@ -28,7 +28,7 @@ To solidify and demonstrate the understanding of:
 ![](https://media.giphy.com/media/aE6dS8OlcsJiMfkS3P/giphy.gif)
 ![](https://media.giphy.com/media/LfvB6kvEvjl1uezXft/giphy.gif)
 ![](https://media.giphy.com/media/zHed9YRlHKHE47LnzB/giphy.gif)
-
+![Live Page](https://mendozalourdes.github.io/intention-timer/)
 **[Back to top](#table-of-contents)**
 
 ## Want to contribute?
@@ -73,7 +73,7 @@ To solidify and demonstrate the understanding of:
 #### Authors
 <table>
     <tr>
-        <td> Lourdes Mendoza <a href="https://github.com/mendozalourde">GH</td>
+        <td> Lourdes Mendoza <a href="https://github.com/mendozalourdes/intention-timer">GH</td>
     </tr>
     </tr>
     <td><img src="https://avatars.githubusercontent.com/u/78240633?v=4" alt="Lourdes GH img"
@@ -83,6 +83,17 @@ width="150" height="auto" /></td>
 <td><img src="https://avatars.githubusercontent.com/u/68021391?v=4" alt="Eva GH img"
 width="150" height="auto" /></td>
     </tr>
+</table>
+
+#### Reviewers
+<table>
+    <tr>
+         <td> Heather Faerber <a href="https://github.com/tarynmartin">GH</td>
+    </tr>
+    </tr>
+    <td><img src="https://avatars.githubusercontent.com/u/18726699?v=4" alt="Heather GH img"
+ width="150" height="auto" /></td>
+</tr>
 </table>
 
 #### Project Manager
