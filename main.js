@@ -226,7 +226,7 @@ function completeTimer() {
 }
 
 var logPastActivities = document.querySelector('#listPastActivities')
-var activityCard = document.querySelector('#activityCard');
+var activitySection = document.querySelector('#activitySection');
 logActivityBtn.addEventListener('click', displayLoggedActivity)
 
 
@@ -234,24 +234,16 @@ logActivityBtn.addEventListener('click', displayLoggedActivity)
 function displayLoggedActivity() {
 // logPastActivities.innerHTML = '';
 logPastActivities.classList.add('hidden');
-activityCard.classList.remove('hidden');
-//   for (var i = 0; i < currentActivity.length; i++) {
-//
-//
-// }
-activityCard.innerHTML = `
-    <div class="identifier-line ${currentActivity.category}"></div>
-    <p class="acivity-card-category" id="activityCardCategory"> ${currentActivity.category}</p>
-    <p class="activity-card-time" id="activityCardTime">${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
-    <p class="activity-card-description" id="activityCardDescription">${currentActivity.description}</p>
-`;
+activitySection.classList.remove('hidden');
+
+  for (var i = 0; i < savedActivities.length; i++) {
+    activitySection.innerHTML += `
+      <div class="activity-card" id="activityCard">
+        <div class="identifier-line ${savedActivities[i].category}"></div>
+        <p class="acivity-card-category" id="activityCardCategory"> ${savedActivities[i].category}</p>
+        <p class="activity-card-time" id="activityCardTime">${savedActivities[i].minutes} MIN ${savedActivities[i].seconds} SECONDS</p>
+        <p class="activity-card-description" id="activityCardDescription">${savedActivities[i].description}</p>
+      </div>
+      `;
+  }
 }
-
-// Add eventListener to logActivityBtn and link it to function of displayLoggedActivity
-//Target #listPastActivities
-// Within the function use innerHTML to insert currentActivity (interpolated) into <div id=listPastActivities
-// use the class to add styling to the logged activities.
-// Add hidden to the <p> tags in list Activities div.
-
-
-//Do we have to add currentActivity to saved activities array in order to show multiple?

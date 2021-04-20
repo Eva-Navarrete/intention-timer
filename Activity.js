@@ -8,8 +8,6 @@ class Activity {
     this.completed = false;
   }
 
-// has it starterd? true or false
-// true - btn cannot be clicked again
   beginTimer(a, b) {
     var intervalID = setInterval(myCallback, 1000);
       function myCallback() {
