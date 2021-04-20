@@ -8,22 +8,20 @@ class Activity {
     this.completed = false;
   }
 
-  beginTimer(a, b) {
-    var intervalID = setInterval(myCallback, 1000);
-      function myCallback() {
-        currentActivity.seconds --;
-        if (currentActivity.seconds === 0) {
-        currentActivity.minutes --;
-        currentActivity.seconds = 59;
-      };
-    }
+  beginTimer() {
+    startTimer()
   }
 
   markComplete() {
-
+    this.completed = true
   }
 
   saveToStorage() {
+    var storedActivity = JSON.stringify(savedActivities);
+
+    localStorage.setItem('currentActivity', storedActivity)
+
+    var parsedActivities = JSON.parse(localStorage.getItem('currentActivity'))
 
   }
 

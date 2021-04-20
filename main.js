@@ -220,6 +220,7 @@ function startTimer() {
 }
 
 function completeTimer() {
+  currentActivity.markComplete();
   if (timerCountdown.innerHTML === "00:00") {
     circleTimerBtn.innerText = 'COMPLETE!';
     circleTimerBtn.classList.add('complete-circle')
@@ -241,6 +242,8 @@ function displayLoggedActivity() {
 activitySection.innerHTML = '';
 showCompletedActivityView ();
 
+retrieveStored();
+
   for (var i = 0; i < savedActivities.length; i++) {
     activitySection.innerHTML += `
       <div class="activity-card" id="activityCard">
@@ -254,7 +257,9 @@ showCompletedActivityView ();
 
 }
 
+
 function showCompletedActivityView () {
+
   logPastActivities.classList.add('hidden');
   activitySection.classList.remove('hidden');
   timerPage.classList.add('hidden');
@@ -266,4 +271,13 @@ function returnCreateActivityView() {
   buttonForm.classList.add('hidden');
   selectCategoryContainer.classList.remove('hidden');
   activityTitle.innerText = 'New Activity';
+  minuteInput.value = ''
+  secondInput.value = ''
+  description.value = ''
+}
+
+function retrieveStored() {
+  currentActivity.saveToStorage();
+  var storedActivities = JSON.parse(localStorage.getItem('currentActivity'))
+
 }
