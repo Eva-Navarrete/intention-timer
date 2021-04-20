@@ -160,8 +160,8 @@ function preventE(e) {
 }
 
 function createActivityInstance() {
-  currentActivity = new Activity(category.value, description.value, Number.parseInt(minuteInput.value), Number.parseInt(secondInput.value));
-}
+  currentActivity = new Activity(category.value, description.value, Number.parseInt(minuteInput.value), Number.parseInt(secondInput.value))
+};
 
 function hideFormView() {
   if (category.value && description.value && minuteInput.value && secondInput.value) {
