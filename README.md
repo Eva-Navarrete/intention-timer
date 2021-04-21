@@ -90,7 +90,7 @@ width="150" height="auto" /></td>
 #### Reviewers
 <table>
     <tr>
-         <td> Heather Faerber <a href="https://github.com/tarynmartin">GH</td>
+         <td> Taryn Martin <a href="https://github.com/tarynmartin">GH</td>
     </tr>
     </tr>
     <td><img src="https://avatars.githubusercontent.com/u/18726699?v=4" alt="Heather GH img"
