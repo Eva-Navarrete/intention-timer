@@ -80,8 +80,16 @@ GitHub Page Link: https://mendozalourdes.github.io/intention-timer/
     </tr>
     <td><img src="https://avatars.githubusercontent.com/u/78240633?v=4" alt="Lourdes GH img"
  width="150" height="auto" /></td>
+    <tr>
+          <td> Maria DelSignore <a href="https://github.com/madhaus4">GH</td>
+    </tr>
+    </tr>
  <td><img src="https://avatars.githubusercontent.com/u/76507607?v=4" alt="Maria GH img"
 width="150" height="auto" /></td>
+     <tr>
+          <td> Eva Navarrete <a href="https://github.com/Eva-Navarrete">GH</td>
+      </tr>
+      </tr>
 <td><img src="https://avatars.githubusercontent.com/u/68021391?v=4" alt="Eva GH img"
 width="150" height="auto" /></td>
     </tr>
