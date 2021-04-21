@@ -9,7 +9,7 @@
 - [Authors and Contributors](#credits)
 
 ## Overview and Project Goals
-The [goal](https://frontend.turing.edu/projects/module-1/intention-timer-group.html) of this solo project I did for Mod1 at [Turing School of Software and Design](https://turing.io/) is to build a Intention Timer from scratch using HTML, CSS, and Vanilla Javascript.
+The [goal](https://frontend.turing.edu/projects/module-1/intention-timer-group.html) of this group project that was made for Mod1 at [Turing School of Software and Design](https://turing.io/) is to build a Intention Timer from scratch using HTML, CSS, and Vanilla Javascript.
 
 ## Why was this project created?
 To solidify and demonstrate the understanding of:
